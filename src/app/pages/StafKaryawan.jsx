@@ -2,15 +2,24 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../components/ui/card';
 import { Plus, X } from 'lucide-react';
-import yeniImage from 'figma:asset/28bf93d291e104e4009070dd771458aee216b8e7.png';
-import triImage from 'figma:asset/816d49e7fb5f8e65418cfea5917431ffdf370e29.png';
-import citraImage from 'figma:asset/2e1920b08f935f4890ae8d91d8b15b92414b8c7f.png';
-import inzaghiImage from 'figma:asset/810705b5828d5a0aa9679db9c2b49b73af8af592.png';
-import elokImage from 'figma:asset/21555d8639a9d625a2c5345a7f831425704e8d2b.png';
-import ditoImage from 'figma:asset/d60885d026a71952dcca37d8fa15159b6a73fdb5.png';
-import zahraImage from 'figma:asset/94b205a30e2d8e7bcba023b4d6521b7e7128d9a3.png';
-import halimahImage from 'figma:asset/f7a5f7c875e9934d98dbaeee35f421d213dd43a8.png';
-import adityaImage from 'figma:asset/4a8d1f37d43ada59dd113c07255443a6fca54030.png';
+import yeniImage from '<img src="/placeholder.png" />
+';
+import triImage from '<img src="/placeholder.png" />
+';
+import citraImage from '<img src="/placeholder.png" />
+';
+import inzaghiImage from '<img src="/placeholder.png" />
+';
+import elokImage from '<img src="/placeholder.png" />
+';
+import ditoImage from '<img src="/placeholder.png" />
+';
+import zahraImage from '<img src="/placeholder.png" />
+';
+import halimahImage from '<img src="/placeholder.png" />
+';
+import adityaImage from '<img src="/placeholder.png" />
+';
 
 export function StafKaryawan() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
