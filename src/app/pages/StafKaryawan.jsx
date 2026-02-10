@@ -2,24 +2,15 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../components/ui/card';
 import { Plus, X } from 'lucide-react';
-import yeniImage from '<img src="/placeholder.png" />
-';
-import triImage from '<img src="/placeholder.png" />
-';
-import citraImage from '<img src="/placeholder.png" />
-';
-import inzaghiImage from '<img src="/placeholder.png" />
-';
-import elokImage from '<img src="/placeholder.png" />
-';
-import ditoImage from '<img src="/placeholder.png" />
-';
-import zahraImage from '<img src="/placeholder.png" />
-';
-import halimahImage from '<img src="/placeholder.png" />
-';
-import adityaImage from '<img src="/placeholder.png" />
-';
+import yeniImage from '<img src="/placeholder.png" />';
+import triImage from '<img src="/placeholder.png" />';
+import citraImage from '<img src="/placeholder.png" />';
+import inzaghiImage from '<img src="/placeholder.png" />';
+import elokImage from '<img src="/placeholder.png" />';
+import ditoImage from '<img src="/placeholder.png" />';
+import zahraImage from '<img src="/placeholder.png" />';
+import halimahImage from '<img src="/placeholder.png" />';
+import adityaImage from '<img src="/placeholder.png" />';
 
 export function StafKaryawan() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
