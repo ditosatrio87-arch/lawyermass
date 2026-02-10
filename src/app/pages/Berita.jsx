@@ -7,20 +7,17 @@ export function Berita() {
       title: "Regulasi Hukum Korporasi Terbaru: Yang Perlu Diketahui Bisnis Anda",
       date: "2 Januari 2026",
       summary: "Pembaruan terkini dalam regulasi hukum korporasi yang dapat mempengaruhi operasional bisnis Anda. Pelajari persyaratan kepatuhan dan cara mempersiapkannya.",
-      image: "https://images.unsplash.com/photo-1752697589128-f8e110a86af3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYXclMjBib29rcyUyMGxlZ2FsfGVufDF8fHx8MTc2NzYwOTI1MXww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
+      image: 
     {
       title: "Perlindungan Merek di Era Digital: Panduan Esensial",
       date: "28 Desember 2025",
       summary: "Memahami pentingnya melindungi merek Anda di pasar yang semakin digital. Wawasan ahli tentang strategi merek dagang modern.",
-      image: "https://images.unsplash.com/photo-1763729805496-b5dbf7f00c79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnRyYWN0JTIwbGVnYWx8ZW58MXx8fHwxNzY3NjA5MjUxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-    },
+      image: 
     {
       title: "Pembaruan Hukum Pajak 2026 untuk Perseroan Terbatas",
       date: "20 Desember 2025",
       summary: "Tetap terinformasi tentang perubahan hukum pajak terbaru yang mempengaruhi PT. Panduan komprehensif kami membantu Anda menavigasi persyaratan baru.",
-      image: "https://images.unsplash.com/photo-1756633231294-f72b004e8c5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3VydGhvdXNlJTIwanVzdGljZXxlbnwxfHx8fDE3Njc1MDgwMDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-    }
+      image: 
   ];
 
   return (
