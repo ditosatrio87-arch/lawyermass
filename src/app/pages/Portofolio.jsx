@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
-import portfolioImg1 from 'figma:asset/e40f1cc5e87b05f175545d6ffb7f8a8721c924b0.png';
-import portfolioImg2 from 'figma:asset/537bae83c4c7339bc3ceae05b14e378de53a128c.png';
-import portfolioImg3 from 'figma:asset/93f55bc688214b926a33058a7279b2e5a9147e4a.png';
-import portfolioImg4 from 'figma:asset/e9b59465e638b96d281d4589a109e7a3e102ba21.png';
+import portfolioImg1 from '<img src="/placeholder.png" />';
+import portfolioImg2 from '<img src="/placeholder.png" />';
+import portfolioImg3 from '<img src="/placeholder.png" />';
+import portfolioImg4 from '<img src="/placeholder.png" />';
 
 export function Portofolio() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
