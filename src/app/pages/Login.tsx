@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Lock, Mail } from 'lucide-react';
-import logo from 'figma:asset/41ce91d335687c01ed9037dc586c746056ffaa98.png';
+import logo from '<img src="/placeholder.png" />';
 import { supabase } from '../../lib/supabase';
 import { toast } from 'sonner';
 
