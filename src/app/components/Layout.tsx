@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Footer } from "./Footer";
-import logo from "figma:asset/41ce91d335687c01ed9037dc586c746056ffaa98.png";
+import logo from "<img src="/placeholder.png" />
+";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { supabase } from "../../lib/supabase";
