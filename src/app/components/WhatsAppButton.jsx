@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import whatsappIcon from 'figma:asset/74f5c35be0336a15e35ac7a46f0512e81a5e4602.png';
+import whatsappIcon from '<img src="/placeholder.png" />
+';
 
 export function WhatsAppButton() {
   const [isPulsing, setIsPulsing] = useState(false);
