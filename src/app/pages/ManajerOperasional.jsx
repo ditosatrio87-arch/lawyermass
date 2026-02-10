@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../components/ui/card';
 import { Plus, X } from 'lucide-react';
-import managerImage from "figma:asset/431009768138d379bad4f6471e22a0856e2ec9e0.png";
+import managerImage from "<img src="/placeholder.png" />";
 
 export function ManajerOperasional() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
