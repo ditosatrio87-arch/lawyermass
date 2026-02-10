@@ -4,8 +4,7 @@ import {
   MapPin,
   MessageCircle,
 } from "lucide-react";
-import logo from "<img src="/placeholder.png" />
-";
+import logo from "<img src="/placeholder.png" />";
 
 export function Footer() {
   return (
