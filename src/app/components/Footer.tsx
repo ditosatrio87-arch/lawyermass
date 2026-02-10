@@ -4,7 +4,8 @@ import {
   MapPin,
   MessageCircle,
 } from "lucide-react";
-import logo from "figma:asset/41ce91d335687c01ed9037dc586c746056ffaa98.png";
+import logo from "<img src="/placeholder.png" />
+";
 
 export function Footer() {
   return (
