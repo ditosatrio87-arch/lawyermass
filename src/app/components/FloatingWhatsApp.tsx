@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import whatsappIcon from '<img src="/placeholder.png" />';
+import whatsappIcon from '/placeholder.png';
 
 export function FloatingWhatsApp() {
   const phoneNumber = "6289530407021";

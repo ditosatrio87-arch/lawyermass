@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Lock, Mail } from 'lucide-react';
-import logo from '<img src="/placeholder.png" />';
+import logo from '/placeholder.png';
 import { supabase } from '../../lib/supabase';
 import { toast } from 'sonner';
 
