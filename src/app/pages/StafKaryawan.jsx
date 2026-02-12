@@ -6,7 +6,7 @@ import yeniImage from '/yeni.webp';
 import triImage from '/tri.jpeg';
 import citraImage from '/citra.png';
 import inzaghiImage from '/inzaghi.png';
-import elokImage from '/elok.jpg';
+import elokImage from '/elok.JPG';
 import ditoImage from '/dito.jpeg';
 import zahraImage from '/zahra.png';
 import halimahImage from '/halimah.png';
