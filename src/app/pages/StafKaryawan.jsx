@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../components/ui/card';
 import { Plus, X } from 'lucide-react';
-import yeniImage from '/images/yeni.webp" alt="StafKaryawan" />';
+import yeniImage from '/images/yeni.webp';
 import triImage from '/placeholder.png';
 import citraImage from '/placeholder.png';
 import inzaghiImage from '/placeholder.png';
