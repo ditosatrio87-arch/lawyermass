@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../components/ui/card';
 import { Plus, X } from 'lucide-react';
 import yeniImage from '/yeni.webp';
-import triImage from '/placeholder.png';
-import citraImage from '/placeholder.png';
-import inzaghiImage from '/placeholder.png';
-import elokImage from '/placeholder.png';
-import ditoImage from '/placeholder.png';
-import zahraImage from '/placeholder.png';
-import halimahImage from '/placeholder.png';
-import adityaImage from '/placeholder.png';
+import triImage from '/tri.jpeg';
+import citraImage from '/citra.png';
+import inzaghiImage from '/inzaghi.png';
+import elokImage from '/elok.jpg';
+import ditoImage from '/dito.jpeg';
+import zahraImage from '/zahra.png';
+import halimahImage from '/halimah.png';
+import adityaImage from '/adit.png';
 
 export function StafKaryawan() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
