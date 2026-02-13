@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Card } from '../components/ui/card';
 import { Plus, X } from 'lucide-react';
-import managerImage from "/placeholder.png";
+import managerImage from "/dzul.jpeg";
 
 export function ManajerOperasional() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
