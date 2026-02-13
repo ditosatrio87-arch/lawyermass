@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router-dom';
-import heroBackground from '/placeholder.png';
+import heroBackground from '/hero.png';
 import { VisiMisi } from '../components/VisiMisi';
 
 export function Beranda() {
