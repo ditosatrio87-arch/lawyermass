@@ -62,7 +62,7 @@ export function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   WhatsApp: 6288295359866
-                 </a>
+                  </a>
               </div>
             </div>
           </div>
