@@ -121,19 +121,23 @@ export function Kontak() {
                        <Clock className="w-5 h-5 text-[#AE8737] fill-[#AE8737]" />
                     </div>
                     <div>
-                      <h3 className="mb-3 text-white text-xl font-semibold">
+                       <h3 className="mb-3 text-white text-xl font-semibold">
                         Jam Operasional
                       </h3>
-                      <div className="text-gray-300 leading-relaxed space-y-1">
-                        <div className="flex justify-between w-full max-w-[200px]">
+                      <div className="text-gray-300 leading-relaxed space-y-4">
+                        <div className="flex justify-between w-full max-w-[420px] gap-x-8">
                           <span>Senin - Jumat</span>
-                          <span className="text-white font-medium">09.00 - 17.00</span>
+                          <span className="text-white font-medium">
+                            09.00 - 17.00
+                          </span>
                         </div>
-                        <div className="flex justify-between w-full max-w-[200px]">
+                        <div className="flex justify-between w-full max-w-[420px] gap-x-8">
                           <span>Sabtu</span>
-                          <span className="text-white font-medium">09.00 - 14.00</span>
+                          <span className="text-white font-medium">
+                            09.00 - 14.00
+                          </span>
                         </div>
-                         <div className="flex justify-between w-full max-w-[200px] text-red-400">
+                        <div className="flex justify-between w-full max-w-[420px] gap-x-8 text-red-400">
                           <span>Minggu</span>
                           <span className="font-medium">Tutup</span>
                         </div>
