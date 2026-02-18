@@ -23,7 +23,7 @@ export function Kontak() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Phone Card */}
           <a
-            href="tel:6289530407021"
+            href="tel:6288295359866"
             className="block h-full"
           >
             <Card className="h-full bg-[#1a1a1a] border border-[#AE8737] hover:bg-[#AE8737]/10 hover:shadow-[0_0_15px_rgba(174,135,55,0.3)] transition-all duration-300 group">
@@ -59,7 +59,7 @@ export function Kontak() {
 
           {/* WhatsApp Card */}
           <a
-            href="https://wa.me/6289530407021"
+            href="https://wa.me/6288295359866"
             target="_blank"
             rel="noopener noreferrer"
             className="block h-full"
