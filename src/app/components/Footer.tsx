@@ -61,7 +61,7 @@ export function Footer() {
                   href="https://wa.me/6289530407021"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp: +62 895 3040 7021
+                  WhatsApp: 6288295359866
                 </a>
               </div>
             </div>
