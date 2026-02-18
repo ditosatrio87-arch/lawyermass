@@ -14,7 +14,7 @@ export function WhatsAppButton() {
     return () => clearInterval(interval);
   }, []);
 
-  const whatsappUrl = 'https://wa.me/6289530407021?text=Halo%20M.A.S%20Law%20Firm,%20saya%20ingin%20konsultasi%20gratis';
+  const whatsappUrl = 'https://wa.me/6288295359866?text=Halo%20M.A.S%20Law%20Firm,%20saya%20ingin%20konsultasi%20gratis';
 
   return (
     <a
