@@ -72,12 +72,9 @@ export function Footer() {
             </h4>
             <div className="text-slate-400 space-y-2 leading-relaxed">
               <p>Senin - Jumat</p>
-              <p className="mb-3">09.00 - 18.00 WIB</p>
+              <p className="mb-6">09.00 - 18.00 WIB</p>
               <p>Sabtu</p>
               <p>09.00 - 14.00 WIB</p>
-            <div className="flex justify-between text-red-400">
-              <span>Minggu</span>
-              <span>Tutup</span>
             </div>
           </div>
         </div>
