@@ -62,28 +62,19 @@ export function Footer() {
                   className="hover:text-white transition-colors"
                 >
                   WhatsApp: 6288295359866
-                </a>
+                 </a>
               </div>
             </div>
           </div>
           <div>
-           <div className="text-slate-400 space-y-2 leading-relaxed">
-  <div className="flex justify-between">
-    <span>Senin - Jumat</span>
-    <span>09.00 - 18.00 WIB</span>
-  </div>
-
-  <div className="flex justify-between">
-    <span>Sabtu</span>
-    <span>09.00 - 14.00 WIB</span>
-  </div>
-
-  <div className="flex justify-between text-red-400">
-    <span>Minggu</span>
-    <span>Tutup</span>
-  </div>
-</div>
-
+            <h4 className="mb-5 text-[#AE8737]">
+              Jam Operasional
+            </h4>
+            <div className="text-slate-400 space-y-2 leading-relaxed">
+              <p>Senin - Jumat</p>
+              <p className="mb-3">09.00 - 18.00 WIB</p>
+              <p>Sabtu</p>
+              <p>09.00 - 14.00 WIB</p>
             </div>
           </div>
         </div>
