@@ -33,7 +33,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Telepon</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
-                  +62 895 3040 7021
+                  +62 882 9535 9866
                 </span>
               </CardContent>
             </Card>
@@ -41,7 +41,7 @@ export function Kontak() {
 
           {/* Email Card */}
           <a
-            href="mailto:kantorpengacaramas@gmail.com"
+            href="mailto:admin@lawyermas.com"
             className="block h-full"
           >
             <Card className="h-full bg-[#1a1a1a] border border-[#AE8737] hover:bg-[#AE8737]/10 hover:shadow-[0_0_15px_rgba(174,135,55,0.3)] transition-all duration-300 group">
@@ -51,7 +51,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Email</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide break-all">
-                  kantorpengacaramas@gmail.com
+                  admin@lawyermas.com
                 </span>
               </CardContent>
             </Card>
@@ -71,7 +71,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">WhatsApp</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
-                  +62 895 3040 7021
+                  +62 882 9535 9866
                 </span>
               </CardContent>
             </Card>
