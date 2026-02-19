@@ -48,6 +48,8 @@ export function Admin() {
     }
   ]);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('All');
   const [formData, setFormData] = useState({
     title: '',
     date: '',
@@ -55,6 +57,13 @@ export function Admin() {
     image: '',
     status: 'Draft'
   });
+  const filteredArticles = newsArticles
+    .filter(article =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter(article =>
+      statusFilter === 'All' ? true : article.status === statusFilter
+    );
 
   const handleSignOut = async () => {
     try {
@@ -130,7 +139,7 @@ export function Admin() {
 
   const sidebarItems = [
     { id: 'news', icon: Newspaper, label: 'Manage News' },
-    { id: 'lawyers', icon: Users, label: 'Manage Lawyers' },
+    { id: 'verification', icon: Settings, label: 'Document Verification' },
     { id: 'settings', icon: Settings, label: 'Site Settings' }
   ];
 
@@ -187,7 +196,7 @@ export function Admin() {
             <div>
               <h2 className="text-3xl font-bold text-[#191919] mb-2">
                 {activeTab === 'news' && 'Manage News'}
-                {activeTab === 'lawyers' && 'Manage Lawyers'}
+                {activeTab === 'verification' && 'Document Verification'}
                 {activeTab === 'settings' && 'Site Settings'}
               </h2>
               <p className="text-slate-600">
@@ -213,6 +222,25 @@ export function Admin() {
             <>
               {/* Add/Edit Form */}
               {showAddForm && (
+                <div className="mb-6 flex gap-4">
+                  <input
+                    type="text"
+                    placeholder="Search article..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="border border-slate-300 rounded-lg px-4 py-2 w-full"
+                  />
+                
+                  <select
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                    className="border border-slate-300 rounded-lg px-4 py-2"
+                  >
+                    <option value="All">All</option>
+                    <option value="Published">Published</option>
+                    <option value="Draft">Draft</option>
+                  </select>
+                </div>
                 <Card className="mb-8 border-[#AE8737]/30">
                   <CardContent className="p-6">
                     <div className="flex justify-between items-center mb-6">
@@ -325,7 +353,7 @@ export function Admin() {
                   </CardContent>
                 </Card>
               )}
-
+              
               {/* News Articles Table */}
               <Card>
                 <CardContent className="p-6">
@@ -340,7 +368,7 @@ export function Admin() {
                         </tr>
                       </thead>
                       <tbody>
-                        {newsArticles.map((article) => (
+                        {filteredArticles.map((article) => (
                           <tr key={article.id} className="border-b border-slate-100 hover:bg-slate-50">
                             <td className="py-4 px-4">
                               <div className="flex items-start gap-3">
@@ -394,12 +422,24 @@ export function Admin() {
           )}
 
           {/* Lawyers Management Tab */}
-          {activeTab === 'lawyers' && (
+          {activeTab === 'verification' && (
             <Card>
-              <CardContent className="p-12 text-center">
-                <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-[#191919] mb-2">Lawyer Management</h3>
-                <p className="text-slate-600">This section is under development. You will be able to add and manage lawyers here.</p>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4">Document Verification</h3>
+          
+                <input
+                  type="text"
+                  placeholder="Enter document code (e.g., MAS-2026-001)"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg mb-3"
+                />
+          
+                <Button className="bg-[#AE8737] text-white">
+                  Check Document
+                </Button>
+          
+                <p className="text-slate-500 mt-4">
+                  Verification result will appear here.
+                </p>
               </CardContent>
             </Card>
           )}
