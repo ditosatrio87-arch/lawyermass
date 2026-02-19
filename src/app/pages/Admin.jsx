@@ -78,13 +78,20 @@ export function Admin() {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const file = e.target.files[0];
+    if (!file)return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      image: reaer.reasult    
     }));
   };
 
+  reader.readAsDataURL(file);
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -428,10 +435,16 @@ export function Admin() {
                 <h3 className="text-xl font-bold mb-4">Document Verification</h3>
           
                 <input
-                  type="text"
-                  placeholder="Enter document code (e.g., MAS-2026-001)"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg mb-3"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg"
                 />
+                {formData.image && (
+                  <img
+                    scr={formData.image}
+                    alt="Preview"
+                    className="mt-3 w-32 h-32 objeck-cover rounded"
           
                 <Button className="bg-[#AE8737] text-white">
                   Check Document
