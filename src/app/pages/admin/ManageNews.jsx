@@ -8,6 +8,8 @@ export function ManageNews({ articles, setArticles }) {
   const [editingArticle, setEditingArticle] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('All');
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
 
   const [formData, setFormData] = useState({
     title: '',
@@ -40,13 +42,26 @@ export function ManageNews({ articles, setArticles }) {
     }));
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const finalData = { ...formData };
+    if (imagePreview) {
+      finalData.image = imagePreview;
+    }
+    
     if (editingArticle) {
-      setArticles(articles.map(a => a.id === editingArticle.id ? { ...formData, id: editingArticle.id } : a));
+      setArticles(articles.map(a => a.id === editingArticle.id ? { ...finalData, id: editingArticle.id } : a));
       setEditingArticle(null);
     } else {
-      setArticles([...articles, { ...formData, id: Date.now() }]);
+      setArticles([...articles, { ...finalData, id: Date.now() }]);
     }
     resetForm();
     setShowForm(false);
@@ -55,6 +70,8 @@ export function ManageNews({ articles, setArticles }) {
   const handleEdit = (article) => {
     setFormData(article);
     setEditingArticle(article);
+    setImagePreview(article.image || '');
+    setImageFile(null);
     setShowForm(true);
   };
 
@@ -77,6 +94,8 @@ export function ManageNews({ articles, setArticles }) {
       date: new Date().toISOString().split('T')[0]
     });
     setEditingArticle(null);
+    setImageFile(null);
+    setImagePreview('');
   };
 
   const filteredArticles = articles.filter(article => {
@@ -155,22 +174,31 @@ export function ManageNews({ articles, setArticles }) {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#191919] mb-1">Featured Image URL</label>
-                  <div className="flex gap-2">
-                    <input
-                      type="url"
-                      name="image"
-                      value={formData.image}
-                      onChange={handleInputChange}
-                      className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#AE8737] focus:border-transparent transition-shadow"
-                      placeholder="https://..."
-                    />
-                    <div className="w-10 h-10 bg-slate-100 rounded flex items-center justify-center border border-slate-200 overflow-hidden">
-                      {formData.image ? (
-                        <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
-                      ) : (
-                        <ImageIcon className="w-5 h-5 text-slate-400" />
-                      )}
+                  <label className="block text-sm font-medium text-[#191919] mb-2">Featured Image</label>
+                  <div className="flex items-start gap-4">
+                    {(imagePreview || formData.image) && (
+                      <div className="w-[150px] h-[150px] rounded-lg border border-slate-200 overflow-hidden bg-slate-100 flex-shrink-0">
+                        <img 
+                          src={imagePreview || formData.image} 
+                          alt="Preview" 
+                          className="w-full h-full object-cover" 
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <label className="inline-flex items-center justify-center px-4 py-2 border border-slate-300 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors bg-white">
+                        <ImageIcon className="w-5 h-5 mr-2 text-slate-500" />
+                        <span className="text-sm font-medium text-slate-700">Upload Image</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageChange}
+                          className="hidden"
+                        />
+                      </label>
+                      <p className="text-xs text-slate-500 mt-2">
+                        Upload a featured image from your device. Supported formats: JPG, PNG, WEBP.
+                      </p>
                     </div>
                   </div>
                 </div>
