@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import portfolioImg1 from '/pendirian%pt%pma.jpeg';
 import portfolioImg2 from '/klien%internasional.jpeg';
-import portfolioImg3 from '/pndampingan%pemeriksaan%bpjs%ketenagakerjaan.jpeg';
-import portfolioImg4 from '/mediatorr.jpeg';
+import portfolioImg3 from '/pendampingan%pemeriksaan%bpjs%ketenagakerjaan.jpeg';
+import portfolioImg4 from '/mediator.jpeg';
 
 export function Portofolio() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
