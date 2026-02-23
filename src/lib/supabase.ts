@@ -1,7 +1,8 @@
-import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+import { createClient } from '@supabase/supabase-js';
+import { projectId, publicAnonKey } from '../../utils/supabase/info';
+
+const supabaseUrl = `https://${projectId}.supabase.co`;
+const supabaseKey = publicAnonKey;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
-

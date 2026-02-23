@@ -23,7 +23,7 @@ export function Kontak() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Phone Card */}
           <a
-            href="tel:6288295359866"
+            href="tel:6289530407021"
             className="block h-full"
           >
             <Card className="h-full bg-[#1a1a1a] border border-[#AE8737] hover:bg-[#AE8737]/10 hover:shadow-[0_0_15px_rgba(174,135,55,0.3)] transition-all duration-300 group">
@@ -33,7 +33,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Telepon</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
-                  +62 882 9535 9866
+                  +62 895 3040 7021
                 </span>
               </CardContent>
             </Card>
@@ -41,7 +41,7 @@ export function Kontak() {
 
           {/* Email Card */}
           <a
-            href="mailto:admin@lawyermas.com"
+            href="mailto:kantorpengacaramas@gmail.com"
             className="block h-full"
           >
             <Card className="h-full bg-[#1a1a1a] border border-[#AE8737] hover:bg-[#AE8737]/10 hover:shadow-[0_0_15px_rgba(174,135,55,0.3)] transition-all duration-300 group">
@@ -51,7 +51,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Email</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide break-all">
-                  admin@lawyermas.com
+                  kantorpengacaramas@gmail.com
                 </span>
               </CardContent>
             </Card>
@@ -59,7 +59,7 @@ export function Kontak() {
 
           {/* WhatsApp Card */}
           <a
-            href="https://wa.me/6288295359866"
+            href="https://wa.me/6289530407021"
             target="_blank"
             rel="noopener noreferrer"
             className="block h-full"
@@ -71,7 +71,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">WhatsApp</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
-                  +62 882 9535 9866
+                  +62 895 3040 7021
                 </span>
               </CardContent>
             </Card>
@@ -121,23 +121,19 @@ export function Kontak() {
                        <Clock className="w-5 h-5 text-[#AE8737] fill-[#AE8737]" />
                     </div>
                     <div>
-                       <h3 className="mb-3 text-white text-xl font-semibold">
+                      <h3 className="mb-3 text-white text-xl font-semibold">
                         Jam Operasional
                       </h3>
-                      <div className="text-gray-300 leading-relaxed space-y-4">
-                        <div className="flex justify-between w-full max-w-[420px] gap-x-8">
+                      <div className="text-gray-300 leading-relaxed space-y-1">
+                        <div className="flex justify-between w-full max-w-[200px]">
                           <span>Senin - Jumat</span>
-                          <span className="text-white font-medium">
-                            09.00 - 17.00
-                          </span>
+                          <span className="text-white font-medium">09.00 - 17.00</span>
                         </div>
-                        <div className="flex justify-between w-full max-w-[420px] gap-x-8">
+                        <div className="flex justify-between w-full max-w-[200px]">
                           <span>Sabtu</span>
-                          <span className="text-white font-medium">
-                            09.00 - 14.00
-                          </span>
+                          <span className="text-white font-medium">09.00 - 14.00</span>
                         </div>
-                        <div className="flex justify-between w-full max-w-[420px] gap-x-8 text-red-400">
+                         <div className="flex justify-between w-full max-w-[200px] text-red-400">
                           <span>Minggu</span>
                           <span className="font-medium">Tutup</span>
                         </div>
