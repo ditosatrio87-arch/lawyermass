@@ -28,28 +28,28 @@ export function Portofolio() {
       title: "Pendirian PT PMA",
       description: "Konsultasi Hukum Bisnis & Perizinan",
       image: portfolioImg1,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.\n\nTotam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+      detailedDescription: "Mendampingi klien dalam proses pendirian Perseroan Terbatas Penanaman Modal Asing (PT PMA), mulai dari penyusunan dokumen legal, perizinan usaha, hingga memastikan kepatuhan terhadap regulasi yang berlaku di Indonesia."
     },
     {
       id: 2,
       title: "Internatioal Client",
       description: "Legal Advisory & Event Partnership",
       image: portfolioImg2,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.\n\nDonec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.\n\nAenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat."
+      detailedDescription: "Berpengalaman menangani klien internasional dengan pendekatan profesional dan komunikatif, memastikan setiap kebutuhan hukum dipahami secara komprehensif serta selaras dengan sistem hukum Indonesia."
     },
     {
       id: 3,
       title: "Pendampingan Pemeriksaan BPJS Ketenagakerjaan",
       description: "Pertemuan Strategis dengan Klien Korporat",
       image: portfolioImg3,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit mollis lacus. Nam adipiscing. Vestibulum eu odio. Vivamus laoreet. Nullam tincidunt adipiscing enim. Phasellus tempus.\n\nProin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Fusce neque. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.\n\nVivamus aliquet elit ac nisl. Fusce fermentum odio nec arcu. Vivamus euismod mauris. In ut quam vitae odio lacinia tincidunt. Praesent ut ligula non mi varius sagittis. Cras sagittis. Praesent ac sem eget est egestas volutpat."
+      detailedDescription: "Memberikan pendampingan hukum dalam proses pemeriksaan BPJS Ketenagakerjaan, termasuk konsultasi kepatuhan dan mitigasi risiko hukum bagi perusahaan."
     },
     {
       id: 4,
-      title: "Meditor",
+      title: "Meditor (Wanprestasi)",
       description: "Pendampingan Hukum & Legal Advisory",
       image: portfolioImg4,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.\n\nPraesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\n\nCurabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor."
+      detailedDescription: "Menangani proses mediasi dalam perkara wanprestasi secara strategis dan solutif, dengan fokus pada penyelesaian yang efektif serta menjaga kepentingan para pihak."
     }
   ];
 
