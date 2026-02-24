@@ -2,11 +2,11 @@ import React from 'react';
 import { FileText, CheckCircle, Clock, ShieldCheck } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
 
-export function DashboardOverview({ articles, documents }) {
+export function DashboardOverview({ articles = [], documents = [] }) {
   const publishedArticles = articles.filter(a => a.status === 'Published').length;
   const draftArticles = articles.filter(a => a.status === 'Draft').length;
   const verifiedDocuments = documents.filter(d => d.status === 'Valid').length;
-
+  const totalDocuments = documents.length;
   const stats = [
     {
       title: 'Total Articles',
@@ -35,6 +35,13 @@ export function DashboardOverview({ articles, documents }) {
       icon: ShieldCheck,
       color: 'text-[#AE8737]',
       bg: 'bg-[#AE8737]/10'
+    },
+    {
+    title: 'Total Docs',
+    value: totalDocuments,
+    icon: FileText,
+    color: 'text-purple-500',
+    bg: 'bg-purple-500/10'
     }
   ];
 
