@@ -38,7 +38,7 @@ export function Berita() {
             <Card key={index} className="border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
               <div className="aspect-[16/10] overflow-hidden bg-slate-100">
                 <img 
-                  src={article.image || '/placeholder.png'} 
+                  src={article.image_url || '/placeholder.jpg'} 
                   alt={article.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -50,9 +50,12 @@ export function Berita() {
                 </div>
                 <h3 className="mb-3 text-[#191919] leading-snug">{article.title}</h3>
                 <p className="text-slate-600 mb-5 leading-relaxed">{article.summary}</p>
-                <a href="#" className="text-[#AE8737] hover:text-[#8f6e2d] inline-flex items-center gap-1 font-medium">
+                <Link
+                  to={`/news/${article.slug}`}
+                  className="text-[#AE8737] hover:text-[#8f6e2d] inline-flex items-center gap-1 font-medium"
+                >
                   Baca Selengkapnya <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </CardContent>
             </Card>
           ))}
