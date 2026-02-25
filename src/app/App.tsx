@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout.tsx';
 import { Beranda } from './pages/Beranda.jsx';
 import { Berita } from './pages/Berita.jsx';
+import { NewsDetail } from './pages/NewsDetail.jsx';
 import { Portofolio } from './pages/Portofolio.jsx';
 import { TimPengacara } from './pages/TimPengacara.jsx';
 import { LayananKami } from './pages/LayananKami.jsx';
@@ -36,6 +37,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Beranda />} />
               <Route path="/berita" element={<Berita />} />
+              <Route path="/news/:slug" element={<NewsDetail />} />
               <Route path="/portofolio" element={<Portofolio />} />
               <Route path="/tim-pengacara" element={<TimPengacara />} />
               <Route path="/manajer-operasional" element={<ManajerOperasional />} />
