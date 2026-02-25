@@ -44,7 +44,7 @@ export function Berita() {
             >
               <div className="aspect-[16/10] overflow-hidden bg-slate-100">
                 <img
-                  src={article.image || '/placeholder.jpg'}
+                  src={article.image_url}
                   alt={article.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
