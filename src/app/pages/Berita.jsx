@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { Link } from 'react-router-dom';
 
 export function Berita() {
