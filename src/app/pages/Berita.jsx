@@ -1,27 +1,27 @@
+import { useEffect, useState } from 'react';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
+import { supabase } from '../lib/supabase';
 
 export function Berita() {
-  const news = [
-    {
-      title: "Regulasi Hukum Korporasi Terbaru: Yang Perlu Diketahui Bisnis Anda",
-      date: "2 Januari 2026",
-      summary: "Pembaruan terkini dalam regulasi hukum korporasi yang dapat mempengaruhi operasional bisnis Anda. Pelajari persyaratan kepatuhan dan cara mempersiapkannya.",
-      image: "https://images.unsplash.com/photo-1752697589128-f8e110a86af3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYXclMjBib29rcyUyMGxlZ2FsfGVufDF8fHx8MTc2NzYwOTI1MXww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-      title: "Perlindungan Merek di Era Digital: Panduan Esensial",
-      date: "28 Desember 2025",
-      summary: "Memahami pentingnya melindungi merek Anda di pasar yang semakin digital. Wawasan ahli tentang strategi merek dagang modern.",
-      image: "https://images.unsplash.com/photo-1752697589128-f8e110a86af3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYXclMjBib29rcyUyMGxlZ2FsfGVufDF8fHx8MTc2NzYwOTI1MXww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-      title: "Pembaruan Hukum Pajak 2026 untuk Perseroan Terbatas",
-      date: "20 Desember 2025",
-      summary: "Tetap terinformasi tentang perubahan hukum pajak terbaru yang mempengaruhi PT. Panduan komprehensif kami membantu Anda menavigasi persyaratan baru.",
-      image: "https://images.unsplash.com/photo-1752697589128-f8e110a86af3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYXclMjBib29rcyUyMGxlZ2FsfGVufDF8fHx8MTc2NzYwOTI1MXww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-  ];
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const { data, error } = await supabase
+        .from('news')
+        .select('*')
+        .order('date', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching news:', error);
+      } else {
+        setNews(data);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   return (
     <section className="py-24 bg-white">
