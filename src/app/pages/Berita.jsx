@@ -16,7 +16,7 @@ export function Berita() {
       if (error) {
         console.error('Error fetching news:', error);
       } else {
-        setNews(data);
+        setNews(data || []);
       }
     };
 
@@ -38,7 +38,7 @@ export function Berita() {
             <Card key={index} className="border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
               <div className="aspect-[16/10] overflow-hidden bg-slate-100">
                 <img 
-                  src={article.image} 
+                  src={article.image || '/placeholder.png'} 
                   alt={article.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
