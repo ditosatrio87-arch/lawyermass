@@ -12,6 +12,24 @@ export function ManageNews({ articles, setArticles }) {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
 
+  const fetchArticles = async () => {
+  const { data, error } = await supabase
+    .from('news')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  setArticles(data);
+};
+
+useEffect(() => {
+  fetchArticles();
+}, []);
+
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -34,6 +52,10 @@ export function ManageNews({ articles, setArticles }) {
       setFormData(prev => ({ ...prev, slug }));
     }
   }, [formData.title, editingArticle]);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -85,19 +107,51 @@ export function ManageNews({ articles, setArticles }) {
   }));
 };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const finalData = { ...formData };
-    
-    if (editingArticle) {
-      setArticles(articles.map(a => a.id === editingArticle.id ? { ...finalData, id: editingArticle.id } : a));
-      setEditingArticle(null);
-    } else {
-      setArticles([...articles, { ...finalData, id: Date.now() }]);
-    }
-    resetForm();
-    setShowForm(false);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const finalData = {
+    title: formData.title,
+    slug: formData.slug,
+    category: formData.category,
+    summary: formData.summary,
+    content: formData.content,
+    image_url: formData.image,   // penting: nama kolom di DB
+    status: formData.status,
+    featured: formData.featured,
+    date: formData.date
   };
+
+  if (editingArticle) {
+    // UPDATE
+    const { error } = await supabase
+      .from('news')
+      .update(finalData)
+      .eq('id', editingArticle.id);
+
+    if (error) {
+      console.error(error);
+      alert('Update failed');
+      return;
+    }
+  } else {
+    // INSERT
+    const { error } = await supabase
+      .from('news')
+      .insert([finalData]);
+
+    if (error) {
+      console.error(error);
+      alert('Insert failed');
+      return;
+    }
+  }
+
+  alert('Saved to database');
+  fetchArticles();   // reload data
+  resetForm();
+  setShowForm(false);
+};
 
   const handleEdit = (article) => {
     setFormData(article);
@@ -107,9 +161,19 @@ export function ManageNews({ articles, setArticles }) {
     setShowForm(true);
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm('Are you sure you want to delete this article?')) {
-      setArticles(articles.filter(a => a.id !== id));
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this article?')) return;
+
+    const { error } = await supabase
+      .from('news')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error(error);
+      alert('Failed to delete article');
+    } else {
+      fetchArticles(); // refresh data
     }
   };
 
@@ -386,7 +450,7 @@ export function ManageNews({ articles, setArticles }) {
                       <td className="py-3 px-4">
                         <div className="w-12 h-12 rounded bg-slate-100 overflow-hidden">
                           {article.image ? (
-                            <img src={article.image} alt="" className="w-full h-full object-cover" />
+                            <img src={article.image_url} alt="" className="w-full h-full object-cover" />
                           ) : (
                             <ImageIcon className="w-5 h-5 text-slate-400 m-auto mt-3" />
                           )}
