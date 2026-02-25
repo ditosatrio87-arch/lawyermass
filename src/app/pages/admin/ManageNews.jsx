@@ -44,10 +44,20 @@ export function ManageNews({ articles, setArticles }) {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      setImagePreview(URL.createObjectURL(file));
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      alert('File must be an image');
+      return;
     }
+
+    if (file.size > 2 * 1024 * 1024) {
+      alert('Max image size is 2MB');
+      return;
+    }
+
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
   };
 
   const handleSubmit = (e) => {
@@ -382,6 +392,13 @@ export function ManageNews({ articles, setArticles }) {
                       </td>
                       <td className="py-3 px-4 text-right">
                         <div className="flex justify-end gap-2">
+                          <button
+                            onClick={() => window.open(`/news/${article.slug}`, '_blank')}
+                            className="p-2 hover:bg-blue-50 rounded text-slate-500 hover:text-blue-500 transition-colors"
+                            title="Preview"
+                          >
+                            <Eye className="w-4 h-4" />
+                          </button>
                           <button
                             onClick={() => handleEdit(article)}
                             className="p-2 hover:bg-slate-100 rounded text-slate-500 hover:text-[#AE8737] transition-colors"
