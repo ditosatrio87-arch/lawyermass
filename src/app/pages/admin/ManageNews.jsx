@@ -1,3 +1,4 @@
+import { supabase } from '../../../lib/supabase';
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, X, Search, Filter, Calendar, Image as ImageIcon, Eye, Check, AlertCircle } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
@@ -42,30 +43,51 @@ export function ManageNews({ articles, setArticles }) {
     }));
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  const handleImageChange = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    if (!file.type.startsWith('image/')) {
-      alert('File must be an image');
-      return;
-    }
+  // Validasi file
+  if (!file.type.startsWith('image/')) {
+    alert('File must be an image');
+    return;
+  }
 
-    if (file.size > 2 * 1024 * 1024) {
-      alert('Max image size is 2MB');
-      return;
-    }
+  if (file.size > 2 * 1024 * 1024) {
+    alert('Max image size is 2MB');
+    return;
+  }
 
-    setImageFile(file);
-    setImagePreview(URL.createObjectURL(file));
-  };
+  const fileName = `${Date.now()}-${file.name}`;
+
+  // Upload ke Supabase Storage
+  const { error } = await supabase.storage
+    .from('news-images')
+    .upload(fileName, file);
+
+  if (error) {
+    console.error(error);
+    alert('Upload failed');
+    return;
+  }
+
+  // Ambil URL public
+  const { data } = supabase.storage
+    .from('news-images')
+    .getPublicUrl(fileName);
+
+  // Simpan URL ke form
+  setImagePreview(data.publicUrl);
+
+  setFormData(prev => ({
+    ...prev,
+    image: data.publicUrl
+  }));
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const finalData = { ...formData };
-    if (imagePreview) {
-      finalData.image = imagePreview;
-    }
     
     if (editingArticle) {
       setArticles(articles.map(a => a.id === editingArticle.id ? { ...finalData, id: editingArticle.id } : a));
