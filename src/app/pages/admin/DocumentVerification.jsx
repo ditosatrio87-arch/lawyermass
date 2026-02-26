@@ -1,3 +1,9 @@
+import React, { useState, useEffect } from 'react';
+import { Search, Plus, Edit2, Trash2, X, Upload, Eye, CheckCircle, XCircle } from 'lucide-react';
+import { Card, CardContent } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { supabase } from '../../../lib/supabase';
+
 export function DocumentVerification() {
   const [documents, setDocuments] = useState([]);
   const [showForm, setShowForm] = useState(false);
