@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Building2, Scale, FileText, Briefcase, X } from 'lucide-react';
-import { Card, CardContent } from '../components/ui/card';
+import { Card, CardContent } from '../../components/ui/card';
 
 export function LayananKami() {
   const [selectedService, setSelectedService] = useState(null);
