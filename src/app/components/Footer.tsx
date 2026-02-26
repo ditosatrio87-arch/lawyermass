@@ -3,8 +3,10 @@ import {
   Mail,
   MapPin,
   MessageCircle,
+  ShieldCheck,
 } from "lucide-react";
 import logo from "/logo.png";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
@@ -13,7 +15,10 @@ export function Footer() {
       className="bg-[#191919] text-white py-16"
     >
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        {/* Grid sekarang 5 kolom */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+
+          {/* Logo */}
           <div>
             <div className="flex items-center gap-3 mb-5">
               <img
@@ -27,8 +32,10 @@ export function Footer() {
               layanan hukum profesional.
             </p>
           </div>
+
+          {/* Alamat */}
           <div>
-            <h4 className="mb-5 text-[#AE8737]">
+            <h4 className="mb-5 text-[#AE8737] font-semibold">
               Informasi Kontak
             </h4>
             <div className="space-y-4 text-slate-400">
@@ -42,8 +49,10 @@ export function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Kontak */}
           <div>
-            <h4 className="mb-5 text-[#AE8737]">
+            <h4 className="mb-5 text-[#AE8737] font-semibold">
               Hubungi Kami
             </h4>
             <div className="space-y-4 text-slate-400">
@@ -66,8 +75,10 @@ export function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Jam */}
           <div>
-            <h4 className="mb-5 text-[#AE8737]">
+            <h4 className="mb-5 text-[#AE8737] font-semibold">
               Jam Operasional
             </h4>
             <div className="text-slate-400 space-y-2 leading-relaxed">
@@ -77,7 +88,34 @@ export function Footer() {
               <p>09.00 - 14.00 WIB</p>
             </div>
           </div>
+
+          {/* ===== KOLOM BARU (PENTING) ===== */}
+          <div>
+            <h4 className="mb-5 text-[#AE8737] font-semibold">
+              Layanan Publik
+            </h4>
+
+            <div className="space-y-3 text-slate-400">
+
+              <Link
+                to="/verify"
+                className="flex items-center gap-3 group hover:text-white transition-colors"
+              >
+                <ShieldCheck className="w-5 h-5 text-[#AE8737] group-hover:scale-110 transition-transform" />
+                <span>
+                  Verifikasi Dokumen Online
+                </span>
+              </Link>
+
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Cek keaslian dokumen resmi yang diterbitkan oleh
+                M.A.S Law Firm secara online.
+              </p>
+            </div>
+          </div>
         </div>
+
+        {/* Bottom */}
         <div className="border-t border-[#2a2a2a] pt-8 text-center text-slate-400">
           <p>
             &copy; 2026 M.A.S. Law Firm. All Right Reserved.
