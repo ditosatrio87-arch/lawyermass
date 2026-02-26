@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabase';
 import { Search, CheckCircle, XCircle, FileText, ShieldCheck } from 'lucide-react';
 
@@ -8,17 +8,25 @@ export function VerifyDocument() {
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
 
-  const handleVerify = async (e) => {
-    e.preventDefault();
+  // Ambil code dari URL jika ada (?code=XXX)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlCode = params.get('code');
+    if (urlCode) {
+      setCode(urlCode);
+      verifyDocument(urlCode);
+    }
+  }, []);
 
+  const verifyDocument = async (docCode) => {
     setLoading(true);
     setResult(null);
     setNotFound(false);
 
     const { data, error } = await supabase
-      .from('documents') // pastikan nama tabel: documents
+      .from('documents')
       .select('*')
-      .eq('code', code.toUpperCase())
+      .eq('code', docCode.toUpperCase())
       .single();
 
     if (error || !data) {
@@ -30,8 +38,13 @@ export function VerifyDocument() {
     setLoading(false);
   };
 
-  // Link halaman verify untuk QR
-  const verifyUrl = `${window.location.origin}/verify?code=${code}`;
+  const handleVerify = (e) => {
+    e.preventDefault();
+    verifyDocument(code);
+  };
+
+  // URL untuk QR (encode agar aman)
+  const verifyUrl = `${window.location.origin}/verify?code=${encodeURIComponent(code)}`;
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-24">
@@ -61,7 +74,7 @@ export function VerifyDocument() {
               placeholder="Contoh: DOC-2026-001"
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="flex-1 px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#AE8737] font-mono"
+              className="flex-1 px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#AE8737] font-mono uppercase"
               required
             />
             <button
@@ -106,8 +119,9 @@ export function VerifyDocument() {
               </h3>
             </div>
 
-            {/* Info */}
-            <div className="grid md:grid-cols-2 gap-6 text-sm text-slate-700">
+            <div className="grid md:grid-cols-2 gap-8 text-sm text-slate-700">
+
+              {/* Info Dokumen */}
               <div className="space-y-2">
                 <p><b>Kode:</b> {result.code}</p>
                 <p><b>Nama Klien:</b> {result.clientName}</p>
@@ -137,20 +151,23 @@ export function VerifyDocument() {
                 )}
               </div>
 
-              {/* QR Code (tanpa install library) */}
-              <div className="flex flex-col items-center justify-center">
-                <p className="text-xs text-slate-500 mb-2">
-                  QR Verifikasi
+              {/* QR */}
+              <div className="flex flex-col items-center justify-center bg-slate-50 rounded-xl p-6 border">
+                <p className="text-xs text-slate-500 mb-3">
+                  QR Verifikasi Resmi
                 </p>
+
                 <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${verifyUrl}`}
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${verifyUrl}`}
                   alt="QR Code"
-                  className="rounded-lg border"
+                  className="rounded-lg"
                 />
-                <p className="text-[10px] text-slate-400 mt-2 text-center">
-                  Scan untuk verifikasi langsung
+
+                <p className="text-[11px] text-slate-400 mt-3 text-center break-all">
+                  Scan untuk membuka halaman verifikasi langsung
                 </p>
               </div>
+
             </div>
           </div>
         )}
