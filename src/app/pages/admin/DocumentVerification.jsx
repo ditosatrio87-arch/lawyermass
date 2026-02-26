@@ -47,40 +47,54 @@ export function DocumentVerification() {
   // ======================
   // FILE UPLOAD
   // ======================
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+ const handleFileUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    if (file.type !== 'application/pdf') {
-      alert('File harus PDF');
-      return;
-    }
+  // Validasi PDF
+  if (file.type !== 'application/pdf') {
+    alert('File harus PDF');
+    return;
+  }
 
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Maksimal 5MB');
-      return;
-    }
+  // Maksimal 5MB
+  if (file.size > 5 * 1024 * 1024) {
+    alert('Ukuran maksimal 5MB');
+    return;
+  }
 
-    const fileName = `${Date.now()}-${file.name}`;
+  // Nama file unik
+  const fileExt = file.name.split('.').pop();
+  const fileName = `${Date.now()}-${Math.random()
+    .toString(36)
+    .substring(2)}.${fileExt}`;
 
-    const { error } = await supabase.storage
-      .from('document-files')
-      .upload(fileName, file);
+  // Upload ke folder 'documents'
+  const { error: uploadError } = await supabase.storage
+    .from('document-files')
+    .upload(`documents/${fileName}`, file, {
+      contentType: 'application/pdf',
+      upsert: false,
+    });
 
-    if (error) {
-      alert('Upload gagal');
-      return;
-    }
+  if (uploadError) {
+    console.error(uploadError);
+    alert('Upload gagal: ' + uploadError.message);
+    return;
+  }
 
-    const { data } = supabase.storage
-      .from('document-files')
-      .getPublicUrl(fileName);
+  // Ambil public URL
+  const { data } = supabase.storage
+    .from('document-files')
+    .getPublicUrl(`documents/${fileName}`);
 
-    setFormData(prev => ({
-      ...prev,
-      fileUrl: data.publicUrl
-    }));
-  };
+  setFormData(prev => ({
+    ...prev,
+    fileUrl: data.publicUrl,
+  }));
+
+  alert('Upload berhasil');
+};
 
   // ======================
   // CREATE / UPDATE
