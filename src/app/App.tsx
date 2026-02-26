@@ -10,6 +10,7 @@ import { Kontak } from './pages/Kontak.jsx';
 import { Admin } from './pages/Admin.jsx';
 import { ManajerOperasional } from './pages/ManajerOperasional.jsx';
 import { StafKaryawan } from './pages/StafKaryawan.jsx';
+import { VerifyDocument } from './pages/VerifyDocument.jsx';
 import { Sitemap } from './pages/Sitemap.jsx';
 import { ScrollToTop } from './components/ScrollToTop.jsx';
 
@@ -45,6 +46,7 @@ export default function App() {
               <Route path="/layanan-kami" element={<LayananKami />} />
               <Route path="/kontak" element={<Kontak />} />
               <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/verify" element={<VerifyDocument />} />
             </Routes>
           </Layout>
         } />
