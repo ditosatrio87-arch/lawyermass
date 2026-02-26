@@ -9,34 +9,30 @@ export function LayananKami() {
     {
       icon: Building2,
       title: "Corporate Lawyer",
-      description:
-        "Solusi hukum komprehensif yang dirancang untuk menjaga stabilitas dan pertumbuhan bisnis Anda.",
+      description: "Solusi hukum komprehensif untuk menjaga stabilitas dan pertumbuhan bisnis Anda.",
       detail:
-        "Layanan Corporate Lawyer mencakup pendirian perusahaan, legal audit, perjanjian bisnis, kepatuhan hukum, hingga pendampingan transaksi korporasi."
+        "Kami memberikan pendampingan hukum perusahaan mulai dari pendirian, perizinan, kontrak bisnis, hingga manajemen risiko hukum untuk memastikan operasional berjalan aman dan sesuai regulasi."
     },
     {
       icon: Scale,
-      title: "Pendaftaran Hak Atas Kekayaan Intelektual (HAKI)",
-      description:
-        "Perlindungan hukum permanen untuk ide, karya, dan identitas bisnis Anda.",
+      title: "Pendaftaran HAKI",
+      description: "Perlindungan hukum untuk merek, logo, dan karya bisnis Anda.",
       detail:
-        "Kami membantu proses pendaftaran merek, hak cipta, paten, serta pendampingan sengketa kekayaan intelektual."
+        "Layanan pendaftaran merek, hak cipta, dan kekayaan intelektual lainnya agar bisnis Anda memiliki perlindungan hukum penuh dari pelanggaran atau penggunaan tanpa izin."
     },
     {
       icon: FileText,
       title: "Company Branding",
-      description:
-        "Integrasi antara kekuatan hukum dan reputasi publik untuk memperkuat posisi pasar Anda.",
+      description: "Penguatan citra bisnis dari sisi hukum dan reputasi.",
       detail:
-        "Meliputi perlindungan nama usaha, legalitas brand, struktur identitas hukum, serta mitigasi risiko hukum terhadap reputasi bisnis."
+        "Kami membantu memastikan identitas bisnis Anda memiliki dasar hukum yang kuat sekaligus mendukung kepercayaan publik dan posisi kompetitif di pasar."
     },
     {
       icon: Briefcase,
-      title: "Civil Litigation and Mediation",
-      description:
-        "Penyelesaian sengketa hukum yang strategis di dalam maupun di luar pengadilan.",
+      title: "Civil Litigation & Mediation",
+      description: "Penyelesaian sengketa secara litigasi maupun non-litigasi.",
       detail:
-        "Pendampingan perkara perdata, negosiasi, mediasi, hingga representasi di pengadilan dengan strategi hukum yang efektif."
+        "Pendampingan dalam proses pengadilan maupun mediasi untuk mencapai solusi terbaik dengan pendekatan strategis dan efisien."
     }
   ];
 
@@ -75,30 +71,27 @@ export function LayananKami() {
         </div>
       </div>
 
-      {/* Modal Popup */}
+      {/* Popup Modal */}
       {selectedService && (
-        <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4"
-          onClick={() => setSelectedService(null)}
-        >
-          <div
-            className="bg-white max-w-lg w-full rounded-xl shadow-xl p-6 relative"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white max-w-lg w-full rounded-xl shadow-xl p-6 relative">
             <button
               onClick={() => setSelectedService(null)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
             >
-              <X />
+              <X className="w-5 h-5" />
             </button>
 
-            <h3 className="text-xl font-bold text-[#191919] mb-4">
+            <h3 className="text-2xl font-bold text-[#191919] mb-4">
               {selectedService.title}
             </h3>
 
-            <p className="text-s refers to a location or address. This field is optional and can be used to store additional information or disambiguation about the entity.",
-            }
-        ],
-        "additionalItems": false
-    }
+            <p className="text-slate-600 leading-relaxed">
+              {selectedService.detail}
+            </p>
+          </div>
+        </div>
+      )}
+    </section>
+  );
 }
