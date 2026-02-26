@@ -9,7 +9,6 @@ export function DocumentVerification() {
   const [showForm, setShowForm] = useState(false);
   const [editingDoc, setEditingDoc] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('All');
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -18,17 +17,8 @@ export function DocumentVerification() {
     type: 'Notarial Deed',
     issueDate: new Date().toISOString().split('T')[0],
     status: 'Valid',
-    file_url: ''
+    fileUrl: ''
   });
-
-  const docTypes = [
-    'Notarial Deed',
-    'Legal Opinion',
-    'Contract Agreement',
-    'Power of Attorney',
-    'Court Decision',
-    'Memorandum of Understanding'
-  ];
 
   // ======================
   // FETCH DATA
@@ -47,7 +37,7 @@ export function DocumentVerification() {
   };
 
   // ======================
-  // INPUT CHANGE
+  // INPUT
   // ======================
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,38 +52,38 @@ export function DocumentVerification() {
     if (!file) return;
 
     if (file.type !== 'application/pdf') {
-      alert('Only PDF allowed');
+      alert('File harus PDF');
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert('Max file size 5MB');
+      alert('Maksimal 5MB');
       return;
     }
 
     const fileName = `${Date.now()}-${file.name}`;
 
     const { error } = await supabase.storage
-      .from('documents')
+      .from('document-files')
       .upload(fileName, file);
 
     if (error) {
-      alert('Upload failed');
+      alert('Upload gagal');
       return;
     }
 
     const { data } = supabase.storage
-      .from('documents')
+      .from('document-files')
       .getPublicUrl(fileName);
 
     setFormData(prev => ({
       ...prev,
-      file_url: data.publicUrl
+      fileUrl: data.publicUrl
     }));
   };
 
   // ======================
-  // SAVE
+  // CREATE / UPDATE
   // ======================
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -118,19 +108,10 @@ export function DocumentVerification() {
   };
 
   // ======================
-  // EDIT
-  // ======================
-  const handleEdit = (doc) => {
-    setFormData(doc);
-    setEditingDoc(doc);
-    setShowForm(true);
-  };
-
-  // ======================
   // DELETE
   // ======================
   const handleDelete = async (id) => {
-    if (!window.confirm('Delete this document?')) return;
+    if (!window.confirm('Hapus dokumen ini?')) return;
 
     await supabase
       .from('documents')
@@ -141,6 +122,14 @@ export function DocumentVerification() {
   };
 
   // ======================
+  // EDIT
+  // ======================
+  const handleEdit = (doc) => {
+    setFormData(doc);
+    setEditingDoc(doc);
+    setShowForm(true);
+  };
+
   const resetForm = () => {
     setFormData({
       code: '',
@@ -148,35 +137,36 @@ export function DocumentVerification() {
       type: 'Notarial Deed',
       issueDate: new Date().toISOString().split('T')[0],
       status: 'Valid',
-      file_url: ''
+      fileUrl: ''
     });
   };
 
   // ======================
   // FILTER
   // ======================
-  const filteredDocs = documents.filter(doc => {
-    const matchSearch =
-      doc.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      doc.clientName.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredDocs = documents.filter(doc =>
+    doc.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    doc.clientName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-    const matchStatus =
-      statusFilter === 'All' || doc.status === statusFilter;
+  const docTypes = [
+    'Notarial Deed',
+    'Legal Opinion',
+    'Contract Agreement',
+    'Power of Attorney',
+    'Court Decision',
+    'Memorandum of Understanding'
+  ];
 
-    return matchSearch && matchStatus;
-  });
-
-  // ======================
-  // UI
-  // ======================
   return (
     <div className="space-y-6">
-
       {/* HEADER */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Document Verification</h2>
-          <p className="text-slate-500 text-sm">Manage and verify legal documents</p>
+          <h2 className="text-2xl font-bold text-[#191919]">Document Verification</h2>
+          <p className="text-slate-500 text-sm">
+            Manage and verify official legal documents.
+          </p>
         </div>
 
         <Button
@@ -191,23 +181,23 @@ export function DocumentVerification() {
       {/* FORM */}
       {showForm && (
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-6 space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
 
               <input
                 name="code"
+                placeholder="DOC-2026-001"
                 value={formData.code}
                 onChange={handleInputChange}
-                placeholder="Document Code"
                 className="w-full border p-2 rounded"
                 required
               />
 
               <input
                 name="clientName"
+                placeholder="Client Name"
                 value={formData.clientName}
                 onChange={handleInputChange}
-                placeholder="Client Name"
                 className="w-full border p-2 rounded"
                 required
               />
@@ -248,13 +238,13 @@ export function DocumentVerification() {
                 onChange={handleFileUpload}
               />
 
-              {formData.file_url && (
+              {formData.fileUrl && (
                 <a
-                  href={formData.file_url}
+                  href={formData.fileUrl}
                   target="_blank"
                   className="text-blue-600 text-sm"
                 >
-                  Preview uploaded file
+                  Preview File
                 </a>
               )}
 
@@ -262,7 +252,6 @@ export function DocumentVerification() {
                 <Button type="submit" disabled={loading}>
                   {loading ? 'Saving...' : 'Save'}
                 </Button>
-
                 <Button
                   type="button"
                   variant="outline"
@@ -271,47 +260,29 @@ export function DocumentVerification() {
                   Cancel
                 </Button>
               </div>
-
             </form>
           </CardContent>
         </Card>
       )}
 
-      {/* SEARCH + FILTER */}
+      {/* SEARCH */}
+      <input
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full border p-2 rounded"
+      />
+
+      {/* TABLE */}
       <Card>
-        <CardContent className="p-6 space-y-4">
-
-          <input
-            placeholder="Search code or client..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border p-2 rounded"
-          />
-
-          <div className="flex gap-2">
-            {['All', 'Valid', 'Revoked'].map(s => (
-              <button
-                key={s}
-                onClick={() => setStatusFilter(s)}
-                className={`px-3 py-1 rounded ${
-                  statusFilter === s
-                    ? 'bg-[#AE8737] text-white'
-                    : 'bg-slate-100'
-                }`}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-
-          {/* TABLE */}
-          <table className="w-full mt-4">
+        <CardContent className="p-6">
+          <table className="w-full">
             <thead>
               <tr className="text-left border-b">
                 <th>Code</th>
                 <th>Client</th>
                 <th>Status</th>
-                <th className="text-right">Actions</th>
+                <th className="text-right">Action</th>
               </tr>
             </thead>
 
@@ -322,35 +293,29 @@ export function DocumentVerification() {
                   <td>{doc.clientName}</td>
                   <td>
                     {doc.status === 'Valid'
-                      ? <span className="text-green-600">Valid</span>
-                      : <span className="text-red-600">Revoked</span>}
+                      ? <CheckCircle className="text-green-500 w-4" />
+                      : <XCircle className="text-red-500 w-4" />
+                    }
                   </td>
-
                   <td className="text-right space-x-2">
-                    {doc.file_url && (
-                      <a href={doc.file_url} target="_blank">
-                        <Eye className="inline w-4 h-4 text-blue-600" />
+                    {doc.fileUrl && (
+                      <a href={doc.fileUrl} target="_blank">
+                        <Eye className="w-4 inline" />
                       </a>
                     )}
-
-                    <Edit2
-                      className="inline w-4 h-4 cursor-pointer"
-                      onClick={() => handleEdit(doc)}
-                    />
-
-                    <Trash2
-                      className="inline w-4 h-4 text-red-600 cursor-pointer"
-                      onClick={() => handleDelete(doc.id)}
-                    />
+                    <button onClick={() => handleEdit(doc)}>
+                      <Edit2 className="w-4 inline" />
+                    </button>
+                    <button onClick={() => handleDelete(doc.id)}>
+                      <Trash2 className="w-4 inline text-red-500" />
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-
         </CardContent>
       </Card>
-
     </div>
   );
 }
