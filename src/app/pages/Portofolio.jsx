@@ -28,28 +28,28 @@ export function Portofolio() {
       title: "Pendirian PT PMA",
       description: "Konsultasi Hukum Bisnis & Perizinan",
       image: portfolioImg1,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.\n\nTotam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+      detailedDescription: "Mendampingi investor asing dalam proses legalitas pendirian badan usaha di Indonesia melalui skema PT PMA. Layanan mencakup konsultasi mengenai pembatasan kepemilikan saham sesuai Daftar Positif Investasi (DPI), pengurusan Nomor Induk Berusaha (NIB) melalui sistem OSS RBA, hingga penyusunan Akta Pendirian dan pengesahan SK Kemenkumham. Fokus utama adalah memastikan struktur permodalan dan rencana investasi klien memenuhi ambang batas minimum investasi asing di Indonesia."
     },
     {
       id: 2,
       title: "Internatioal Client",
       description: "Legal Advisory & Event Partnership",
       image: portfolioImg2,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.\n\nDonec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.\n\nAenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat."
+      detailedDescription: "Memberikan layanan Legal Advisory lintas batas untuk klien internasional yang beroperasi atau mengadakan kegiatan di Indonesia. Kasus ini melibatkan mitigasi risiko hukum terkait kemitraan strategis dan penyelenggaraan acara (event). Penekanan diberikan pada penyusunan kontrak kerja sama yang melindungi kepentingan klien secara hukum (contract drafting), kepatuhan terhadap regulasi lokal, serta pendampingan negosiasi untuk memastikan seluruh aspek legalitas terpenuhi sebelum operasional dimulai."
     },
     {
       id: 3,
       title: "Pendampingan Pemeriksaan BPJS Ketenagakerjaan",
       description: "Pertemuan Strategis dengan Klien Korporat",
       image: portfolioImg3,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit mollis lacus. Nam adipiscing. Vestibulum eu odio. Vivamus laoreet. Nullam tincidunt adipiscing enim. Phasellus tempus.\n\nProin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Fusce neque. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor.\n\nVivamus aliquet elit ac nisl. Fusce fermentum odio nec arcu. Vivamus euismod mauris. In ut quam vitae odio lacinia tincidunt. Praesent ut ligula non mi varius sagittis. Cras sagittis. Praesent ac sem eget est egestas volutpat."
+      detailedDescription: "Memberikan pendampingan hukum bagi klien korporat dalam menghadapi audit atau pemeriksaan rutin oleh petugas pemeriksa BPJS Ketenagakerjaan. Fokus layanan adalah memastikan kepatuhan perusahaan terhadap kewajiban pendaftaran karyawan dan pelaporan upah yang akurat. Kami membantu dalam penyiapan dokumen data ketenagakerjaan, memberikan argumentasi hukum terkait status kepesertaan, serta memastikan proses pemeriksaan berjalan sesuai dengan regulasi jaminan sosial yang berlaku di Indonesia untuk menghindari sanksi administratif."
     },
     {
       id: 4,
       title: "Meditor",
       description: "Pendampingan Hukum & Legal Advisory",
       image: portfolioImg4,
-      detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.\n\nPraesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\n\nCurabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor."
+      detailedDescription: "Bertindak sebagai pendamping hukum dalam proses Mediasi untuk penyelesaian sengketa di luar pengadilan (non-litigasi). Layanan ini mengutamakan pencapaian solusi "win-win solution" bagi klien melalui negosiasi yang terukur. Deskripsi mencakup analisis posisi hukum klien, penyusunan strategi perdamaian, hingga finalisasi Kesepakatan Perdamaian (Settlement Agreement) yang memiliki kekuatan hukum mengikat bagi para pihak guna menghindari proses litigasi yang memakan waktu dan biaya."
     }
   ];
 
