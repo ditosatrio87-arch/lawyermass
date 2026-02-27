@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Save, Globe, Mail } from 'lucide-react';
+import { Save, Globe, Mail, Phone, MapPin } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { supabase } from '../../../lib/supabase';
@@ -12,7 +12,11 @@ export function SiteSettings() {
     address: ''
   });
 
-  // Load data saat halaman dibuka
+  const [loading, setLoading] = useState(false);
+
+  // ======================
+  // LOAD DATA
+  // ======================
   useEffect(() => {
     fetchSettings();
   }, []);
@@ -21,29 +25,49 @@ export function SiteSettings() {
     const { data, error } = await supabase
       .from('site_settings')
       .select('*')
+      .eq('id', 1)
       .single();
 
-    if (data) {
-      setSettings(data);
+    if (!error && data) {
+      setSettings({
+        siteName: data.site_name || '',
+        contactEmail: data.contact_email || '',
+        contactPhone: data.contact_phone || '',
+        address: data.address || ''
+      });
     }
   };
 
+  // ======================
+  // INPUT CHANGE
+  // ======================
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSettings(prev => ({ ...prev, [name]: value }));
   };
 
+  // ======================
+  // SAVE
+  // ======================
   const handleSave = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const { error } = await supabase
       .from('site_settings')
-      .update(settings)
+      .update({
+        site_name: settings.siteName,
+        contact_email: settings.contactEmail,
+        contact_phone: settings.contactPhone,
+        address: settings.address
+      })
       .eq('id', 1);
 
+    setLoading(false);
+
     if (error) {
-      alert('Failed to save settings');
       console.error(error);
+      alert('Failed to save settings');
     } else {
       alert('Settings saved successfully!');
     }
@@ -65,20 +89,18 @@ export function SiteSettings() {
             <div>
               <label className="block text-sm mb-1">Site Name</label>
               <input
-                type="text"
                 name="siteName"
-                value={settings.siteName || ''}
+                value={settings.siteName}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
               />
             </div>
 
             <div>
-              <label className="block text-sm mb-1">Contact Email</label>
+              <label className="block text-sm mb-1">Email</label>
               <input
-                type="email"
                 name="contactEmail"
-                value={settings.contactEmail || ''}
+                value={settings.contactEmail}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
               />
@@ -87,9 +109,8 @@ export function SiteSettings() {
             <div>
               <label className="block text-sm mb-1">Phone</label>
               <input
-                type="text"
                 name="contactPhone"
-                value={settings.contactPhone || ''}
+                value={settings.contactPhone}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
               />
@@ -99,15 +120,14 @@ export function SiteSettings() {
               <label className="block text-sm mb-1">Address</label>
               <textarea
                 name="address"
-                value={settings.address || ''}
+                value={settings.address}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
               />
             </div>
 
-            <Button type="submit" className="bg-[#AE8737] text-white">
-              <Save className="w-4 h-4 mr-2" />
-              Save Changes
+            <Button type="submit" disabled={loading}>
+              {loading ? 'Saving...' : 'Save Changes'}
             </Button>
 
           </form>
