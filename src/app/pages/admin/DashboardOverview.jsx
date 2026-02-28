@@ -1,9 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+import { PlusCircle, FilePlus, ExternalLink } from 'lucide-react';
+import { Button } from '../../components/ui/button';
 import React from 'react';
 import { FileText, CheckCircle, Clock, ShieldCheck, Plus } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
 import { Link } from 'react-router-dom';
 
 export function DashboardOverview({ articles = [], documents = [] }) {
+  const navigate = useNavigate();
   const publishedArticles = articles.filter(a => a.status === 'Published').length;
   const draftArticles = articles.filter(a => a.status === 'Draft').length;
   const verifiedDocuments = documents.filter(d => d.status === 'Valid').length;
@@ -68,8 +72,35 @@ export function DashboardOverview({ articles = [], documents = [] }) {
       {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-[#191919]">
-          Assalamualaikum Admin 😉
+          Assalamualaikum Admin 
         </h2>
+        <div className="flex flex-wrap gap-3">
+  <Button
+    onClick={() => navigate('/admin/news')}
+    className="bg-[#AE8737] text-white flex items-center gap-2"
+  >
+    <PlusCircle className="w-4 h-4" />
+    New Article
+  </Button>
+
+  <Button
+    variant="outline"
+    onClick={() => navigate('/admin/document-verification')}
+    className="flex items-center gap-2"
+  >
+    <FilePlus className="w-4 h-4" />
+    Add Document
+  </Button>
+
+  <Button
+    variant="outline"
+    onClick={() => navigate('/verify')}
+    className="flex items-center gap-2"
+  >
+    <ExternalLink className="w-4 h-4" />
+    Open Verification Page
+  </Button>
+</div>
         <p className="text-slate-500 text-sm">{today}</p>
       </div>
 
@@ -78,7 +109,18 @@ export function DashboardOverview({ articles = [], documents = [] }) {
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <Card key={index} className="border-none shadow-sm hover:shadow-md transition-shadow">
+            <Card
+  key={index}
+  onClick={() => {
+    if (stat.title === 'Total Articles' || stat.title === 'Published' || stat.title === 'Drafts') {
+      navigate('/admin/news');
+    }
+    if (stat.title === 'Verified Docs' || stat.title === 'Total Docs') {
+      navigate('/admin/document-verification');
+    }
+  }}
+  className="border-none shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+>
               <CardContent className="p-6 flex items-center justify-between">
                 <div>
                   <p className="text-sm text-slate-500 mb-1">{stat.title}</p>
