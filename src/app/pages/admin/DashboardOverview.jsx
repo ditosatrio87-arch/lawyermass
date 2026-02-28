@@ -10,12 +10,15 @@ import { Card, CardContent } from '../../components/ui/card';
 export function DashboardOverview({ articles = [], documents = [] }) {
 
   // ======================
-  // STAT CALCULATION (DISPLAY ONLY)
+  // GREETING BASED ON TIME
   // ======================
-  const publishedArticles = articles.filter(a => a.status === 'Published').length;
-  const draftArticles = articles.filter(a => a.status === 'Draft').length;
-  const verifiedDocuments = documents.filter(d => d.status === 'Valid').length;
-  const totalDocuments = documents.length;
+  const hour = new Date().getHours();
+  let greeting = 'Selamat Datang';
+
+  if (hour >= 5 && hour < 11) greeting = 'Selamat Pagi';
+  else if (hour >= 11 && hour < 15) greeting = 'Selamat Siang';
+  else if (hour >= 15 && hour < 18) greeting = 'Selamat Sore';
+  else greeting = 'Selamat Malam';
 
   const today = new Date().toLocaleDateString('id-ID', {
     weekday: 'long',
@@ -23,6 +26,14 @@ export function DashboardOverview({ articles = [], documents = [] }) {
     month: 'long',
     day: 'numeric'
   });
+
+  // ======================
+  // STAT CALCULATION (STATIC DISPLAY)
+  // ======================
+  const publishedArticles = articles.filter(a => a.status === 'Published').length;
+  const draftArticles = articles.filter(a => a.status === 'Draft').length;
+  const verifiedDocuments = documents.filter(d => d.status === 'Valid').length;
+  const totalDocuments = documents.length;
 
   const stats = [
     {
@@ -79,26 +90,23 @@ export function DashboardOverview({ articles = [], documents = [] }) {
       {/* HEADER */}
       <div>
         <h2 className="text-2xl font-bold text-[#191919]">
-          Dashboard Overview
+          {greeting}, Admin 👋
         </h2>
         <p className="text-slate-500 text-sm">{today}</p>
       </div>
 
-      {/* STATS (DISPLAY ONLY) */}
+      {/* STATS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
-
           return (
             <Card
               key={index}
-              className="border-none shadow-sm"
+              className="border-none shadow-sm hover:shadow-md transition"
             >
               <CardContent className="p-6 flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-slate-500 mb-1">
-                    {stat.title}
-                  </p>
+                  <p className="text-sm text-slate-500 mb-1">{stat.title}</p>
                   <h3 className="text-3xl font-bold text-[#191919]">
                     {stat.value}
                   </h3>
