@@ -15,10 +15,10 @@ export function DashboardOverview({ articles = [], documents = [] }) {
   const hour = new Date().getHours();
   let greeting = 'Selamat Datang';
 
-  if (hour >= 5 && hour < 11) greeting = 'Selamat Pagi';
-  else if (hour >= 11 && hour < 15) greeting = 'Selamat Siang';
-  else if (hour >= 15 && hour < 18) greeting = 'Selamat Sore';
-  else greeting = 'Selamat Malam';
+  if (hour >= 5 && hour < 11) greeting = 'Met Pagi';
+  else if (hour >= 11 && hour < 15) greeting = 'Met Siang';
+  else if (hour >= 15 && hour < 18) greeting = 'Met Sore';
+  else greeting = 'Met Malam';
 
   const today = new Date().toLocaleDateString('id-ID', {
     weekday: 'long',
@@ -90,7 +90,7 @@ export function DashboardOverview({ articles = [], documents = [] }) {
       {/* HEADER */}
       <div>
         <h2 className="text-2xl font-bold text-[#191919]">
-          {greeting}, Admin 👋
+          {greeting}, Admin 💦
         </h2>
         <p className="text-slate-500 text-sm">{today}</p>
       </div>
