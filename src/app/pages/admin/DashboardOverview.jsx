@@ -96,7 +96,7 @@ export function DashboardOverview({ articles = [], documents = [] }) {
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-2xl font-bold text-[#191919]">
-            Assalamualaikum Admin
+            Assalamualaikum Admin ✌🏻
           </h2>
           <p className="text-slate-500 text-sm">{today}</p>
         </div>
