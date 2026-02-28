@@ -12,16 +12,22 @@ import {
 import { Card, CardContent } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 
-export function DashboardOverview({ articles = [], documents = [] }) {
+export function DashboardOverview({ articles, documents }) {
   const navigate = useNavigate();
+
+  // ======================
+  // SAFE DEFAULT
+  // ======================
+  const safeArticles = articles || [];
+  const safeDocuments = documents || [];
 
   // ======================
   // STAT CALCULATION
   // ======================
-  const publishedArticles = articles.filter(a => a.status === 'Published').length;
-  const draftArticles = articles.filter(a => a.status === 'Draft').length;
-  const verifiedDocuments = documents.filter(d => d.status === 'Valid').length;
-  const totalDocuments = documents.length;
+  const publishedArticles = safeArticles.filter(a => a.status === 'Published').length;
+  const draftArticles = safeArticles.filter(a => a.status === 'Draft').length;
+  const verifiedDocuments = safeDocuments.filter(d => d.status === 'Valid').length;
+  const totalDocuments = safeDocuments.length;
 
   const today = new Date().toLocaleDateString('id-ID', {
     weekday: 'long',
@@ -36,7 +42,7 @@ export function DashboardOverview({ articles = [], documents = [] }) {
   const stats = [
     {
       title: 'Total Articles',
-      value: articles.length,
+      value: safeArticles.length,
       icon: FileText,
       color: 'text-blue-500',
       bg: 'bg-blue-500/10',
@@ -79,29 +85,26 @@ export function DashboardOverview({ articles = [], documents = [] }) {
   // ======================
   // RECENT DATA
   // ======================
-  const recentArticles = [...articles]
+  const recentArticles = [...safeArticles]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
 
-  const recentDocs = [...documents]
+  const recentDocs = [...safeDocuments]
     .sort((a, b) => new Date(b.issueDate) - new Date(a.issueDate))
     .slice(0, 3);
 
   return (
     <div className="space-y-8">
 
-      {/* ======================
-          HEADER
-      ====================== */}
+      {/* HEADER */}
       <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-2xl font-bold text-[#191919]">
-            Assalamualaikum Admin ✌🏻
+            Assalamualaikum Admin
           </h2>
           <p className="text-slate-500 text-sm">{today}</p>
         </div>
 
-        {/* Quick Buttons */}
         <div className="flex flex-wrap gap-3">
           <Button
             onClick={() => navigate('/admin/news')}
@@ -131,13 +134,10 @@ export function DashboardOverview({ articles = [], documents = [] }) {
         </div>
       </div>
 
-      {/* ======================
-          STATS
-      ====================== */}
+      {/* STATS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
-
           return (
             <Card
               key={index}
@@ -160,9 +160,7 @@ export function DashboardOverview({ articles = [], documents = [] }) {
         })}
       </div>
 
-      {/* ======================
-          RECENT SECTION
-      ====================== */}
+      {/* RECENT */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* Recent Articles */}
