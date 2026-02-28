@@ -47,6 +47,9 @@ export default function App() {
               <Route path="/kontak" element={<Kontak />} />
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/verify" element={<VerifyDocument />} />
+              <Route path="/admin/news" element={<ManageNews />} />
+              <Route path="/admin/document-verification" element={<DocumentVerification />} />
+              <Route path="/verify" element={<VerifyDocument />} />
             </Routes>
           </Layout>
         } />
