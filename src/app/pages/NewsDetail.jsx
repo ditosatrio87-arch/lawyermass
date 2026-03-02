@@ -77,11 +77,14 @@ export function NewsDetail() {
         )}
 
         {/* Content */}
-        <div className="text-slate-700 leading-relaxed space-y-5 text-[17px]">
-          {paragraphs.map((para, index) => (
-            <p key={index}>{para}</p>
-          ))}
-        </div>
+        <div
+  className="text-slate-700 leading-relaxed space-y-4"
+  dangerouslySetInnerHTML={{
+    __html: article.content
+      ?.replace(/\n/g, '<br/>')
+      ?.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  }}
+></div>
 
       </div>
     </section>
