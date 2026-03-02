@@ -101,48 +101,55 @@ export function Portofolio() {
       </div>
 
       {/* Modal */}
-      <AnimatePresence>
-        {selectedCase && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="bg-white text-black rounded-lg max-w-3xl w-full overflow-hidden"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-            >
-              <button
-                onClick={() => setSelectedCase(null)}
-                className="absolute top-4 right-4"
-              >
-                <X />
-              </button>
+      {/* Modal */}
+<AnimatePresence>
+  {selectedCase && (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setSelectedCase(null)} // klik background untuk close
+    >
+      <motion.div
+        className="relative bg-white text-black rounded-lg max-w-3xl w-full overflow-hidden shadow-2xl"
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.9, y: 20 }}
+        transition={{ type: "spring", duration: 0.4 }}
+        onClick={(e) => e.stopPropagation()} // supaya klik dalam modal tidak close
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setSelectedCase(null)}
+          className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black text-white p-2 rounded-full transition"
+        >
+          <X className="w-5 h-5" />
+        </button>
 
-              <img
-                src={selectedCase.image}
-                alt={selectedCase.title}
-                className="w-full h-64 object-cover"
-              />
+        {/* Image */}
+        <img
+          src={selectedCase.image}
+          alt={selectedCase.title}
+          className="w-full h-64 object-cover"
+        />
 
-              <div className="p-8">
-                <h2 className="text-2xl font-bold mb-2">
-                  {selectedCase.title}
-                </h2>
-                <p className="text-[#AE8737] mb-4">
-                  {selectedCase.description}
-                </p>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {selectedCase.detailedDescription}
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Content */}
+        <div className="p-8">
+          <h2 className="text-2xl font-bold mb-2">
+            {selectedCase.title}
+          </h2>
+          <p className="text-[#AE8737] mb-4 font-semibold">
+            {selectedCase.description}
+          </p>
+          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+            {selectedCase.detailedDescription}
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </section>
   );
 }
