@@ -86,7 +86,7 @@ export function Beranda() {
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-            {/* Corporate Law */}
+            {/* Corporate Lawyer */}
             <Link
               to="/layanan-kami"
               className="group bg-[#252525] p-8 rounded-lg border border-[#2f2f2f] hover:border-[#AE8737] transition duration-300"
@@ -121,7 +121,7 @@ export function Beranda() {
             >
               <ShieldCheck className="w-10 h-10 text-[#AE8737] mb-4" />
               <h3 className="text-xl font-semibold mb-2 group-hover:text-[#AE8737]">
-                Pendaftaran Merek
+                Pendaftaran Haki
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
                 Perlindungan hukum atas merek dan kekayaan intelektual bisnis Anda.
@@ -135,7 +135,7 @@ export function Beranda() {
             >
               <FileText className="w-10 h-10 text-[#AE8737] mb-4" />
               <h3 className="text-xl font-semibold mb-2 group-hover:text-[#AE8737]">
-                Kontrak Bisnis
+                Litigasi & Mediasi
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
                 Penyusunan dan review kontrak bisnis untuk melindungi kepentingan Anda.
