@@ -138,7 +138,7 @@ export function Beranda() {
                 Litigasi & Mediasi
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Penyusunan dan review kontrak bisnis untuk melindungi kepentingan Anda.
+                Penyelesaian sengketa secara profesional dan strategis.
               </p>
             </Link>
 
