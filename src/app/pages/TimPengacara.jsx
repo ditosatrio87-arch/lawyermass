@@ -194,10 +194,69 @@ className="w-40 h-40 object-cover rounded-full mx-auto mb-6"
 <p className="text-[#AE8737] font-semibold mb-4">
 {selectedLawyer.title}
 </p>
+<div className="text-gray-700 text-left mt-6 space-y-6">
 
-<p className="text-gray-600 mb-6">
+{/* BIO */}
+<p className="leading-relaxed">
 {selectedLawyer.bio}
 </p>
+
+{/* EXPERIENCE */}
+{selectedLawyer.experience?.length > 0 && (
+<div>
+<h4 className="font-bold text-[#AE8737] mb-2">
+Experience & Expertise
+</h4>
+
+{selectedLawyer.experience.map((exp, idx) => (
+<div key={idx} className="mb-4">
+
+<p className="font-semibold text-gray-900 mb-1">
+{exp.title}
+</p>
+
+<ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+{exp.points.map((point, pIdx) => (
+<li key={pIdx}>{point}</li>
+))}
+</ul>
+
+</div>
+))}
+</div>
+)}
+
+{/* EDUCATION */}
+{selectedLawyer.education?.length > 0 && (
+<div>
+<h4 className="font-bold text-[#AE8737] mb-2">
+Education
+</h4>
+
+{selectedLawyer.education.map((edu, idx) => (
+<div key={idx} className="mb-3">
+
+<p className="font-semibold text-gray-900">
+{edu.degree}
+</p>
+
+<p className="text-sm text-gray-600">
+{edu.school} • {edu.year}
+</p>
+
+{edu.honor && (
+<p className="text-xs text-[#AE8737] italic">
+{edu.honor}
+</p>
+)}
+
+</div>
+))}
+</div>
+)}
+
+</div>
+
 
 <div className="flex justify-center gap-6">
 
