@@ -20,7 +20,7 @@ export function Beranda() {
 
         <div className="container mx-auto px-6 text-center relative z-10">
           <div className="inline-block mb-6 px-4 py-2 bg-[#AE8737]/10 border border-[#AE8737]/20 rounded-full backdrop-blur-md">
-            <span className="text-[#AE8737] text-sm tracking-wide">
+            <span className="text-white text-sm tracking-wide">
               Dipercaya oleh Perusahaan Terkemuka
             </span>
           </div>
@@ -53,7 +53,7 @@ export function Beranda() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent border-2 border-white text-[#191919] hover:bg-white hover:text-[#191919] px-8"
+                  className="bg-transparent border-2 border-white text-[#191919] hover:bg-white hover:text-white px-8"
                 >
                   Lihat Layanan
                 </Button>
