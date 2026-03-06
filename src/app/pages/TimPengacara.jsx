@@ -92,7 +92,7 @@ className="cursor-pointer text-center"
 <img
 src={lawyer.image}
 alt={lawyer.name}
-className="w-full h-full object-cover object-[center_15%] scale-110"
+className="w-full h-full object-cover object-[center_20%] scale-110"
 />
 
 </div>
