@@ -125,17 +125,21 @@ className="absolute inset-0 flex items-center justify-center"
 {lawyer.specialty}
 </p>
 
+<div className="flex justify-center mt-4">
+
 <a
 href={lawyer.linkedin}
 target="_blank"
 rel="noopener noreferrer"
-className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 hover:border-[#AE8737] hover:bg-[#AE8737] transition"
+className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-400 hover:border-[#AE8737] hover:bg-[#AE8737] transition"
 onClick={(e) => e.stopPropagation()}
 >
 
 <Linkedin className="w-5 h-5 text-white"/>
 
 </a>
+
+</div>
 
 </Card>
 
