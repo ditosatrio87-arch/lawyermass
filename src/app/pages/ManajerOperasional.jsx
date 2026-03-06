@@ -33,12 +33,12 @@ export function ManajerOperasional() {
   };
 
   return (
-    <section className="py-24 bg-[#191919] min-h-screen">
+    <section className="py-24 bg-white min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block w-12 h-1 bg-[#AE8737] mb-6"></div>
-          <h2 className="mb-4 text-white">Manajer Operasional</h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+          <h2 className="mb-4 text-black">Manajer Operasional</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Memastikan keunggulan operasional dan efisiensi layanan M.A.S Law Firm
           </p>
         </div>
@@ -67,18 +67,18 @@ export function ManajerOperasional() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredIndex === 0 ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-[#191919]/90 flex flex-col items-center justify-center"
+                  className="absolute inset-0 bg-white/90 flex flex-col items-center justify-center"
                 >
                   <div className="w-16 h-16 rounded-full bg-[#AE8737] flex items-center justify-center mb-4">
-                    <Plus className="w-8 h-8 text-white" strokeWidth={2.5} />
+                    <Plus className="w-8 h-8 text-[#191919]" strokeWidth={2.5} />
                   </div>
-                  <p className="text-white text-lg font-semibold">Lihat Profil</p>
+                  <p className="text-[#191919] text-lg font-semibold">Lihat Profil</p>
                 </motion.div>
               </div>
 
               {/* Card Info */}
               <div className="p-6 text-center bg-[#1a1a1a] border-t-2 border-[#AE8737]">
-                <h3 className="text-2xl font-bold text-white mb-2">{manager.name}</h3>
+                <h3 className="text-2xl font-bold text-[#191919] mb-2">{manager.name}</h3>
                 <p className="text-[#AE8737] font-semibold text-base mb-1">{manager.title}</p>
                 <p className="text-gray-400 text-sm mb-4">{manager.specialty}</p>
                 <p className="text-gray-500 text-sm line-clamp-3">{manager.bio}</p>
@@ -99,7 +99,7 @@ export function ManajerOperasional() {
           >
             {/* Backdrop */}
             <div 
-              className="absolute inset-0 bg-[#191919]/90 backdrop-blur-sm"
+              className="absolute inset-0 bg-white/90 backdrop-blur-sm"
               onClick={() => setSelectedManager(null)}
             />
 
@@ -115,7 +115,7 @@ export function ManajerOperasional() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedManager(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-[#191919] hover:bg-[#AE8737] border border-[#AE8737] rounded-full transition-colors text-white group"
+                className="absolute top-4 right-4 z-10 p-2 bg-white hover:bg-[#AE8737] border border-[#AE8737] rounded-full transition-colors text-[#191919] group"
               >
                 <X className="w-5 h-5 group-hover:text-[#191919]" />
               </button>
@@ -137,9 +137,9 @@ export function ManajerOperasional() {
                 </div>
 
                 {/* Right: Content */}
-                <div className="w-full md:w-2/3 md:pl-12 text-white">
+                <div className="w-full md:w-2/3 md:pl-12 text-[#191919]">
                   <div className="mb-8 text-center md:text-left">
-                    <h2 className="text-3xl font-bold text-white mb-2">{selectedManager.name}</h2>
+                    <h2 className="text-3xl font-bold text-[#191919] mb-2">{selectedManager.name}</h2>
                     <p className="text-xl text-[#AE8737] font-serif tracking-wide">{selectedManager.title}</p>
                     <div className="h-0.5 w-24 bg-[#AE8737] mt-4 mx-auto md:mx-0"></div>
                   </div>

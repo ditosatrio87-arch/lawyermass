@@ -147,11 +147,11 @@ export function StafKaryawan() {
   ];
 
   return (
-    <section className="py-24 bg-[#191919] min-h-screen">
+    <section className="py-24 bg-white min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block w-12 h-1 bg-[#AE8737] mb-6"></div>
-          <h2 className="mb-4 text-white">Staf & Karyawan</h2>
+          <h2 className="mb-4 text-[#191919]">Staf & Karyawan</h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
             Tim profesional yang berdedikasi mendukung operasional M.A.S Law Firm
           </p>
@@ -183,18 +183,18 @@ export function StafKaryawan() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-[#191919]/90 flex flex-col items-center justify-center"
+                    className="absolute inset-0 bg-white/90 flex flex-col items-center justify-center"
                   >
                     <div className="w-16 h-16 rounded-full bg-[#AE8737] flex items-center justify-center mb-4">
-                      <Plus className="w-8 h-8 text-white" strokeWidth={2.5} />
+                      <Plus className="w-8 h-8 text-[#191919]" strokeWidth={2.5} />
                     </div>
-                    <p className="text-white text-lg font-semibold">Lihat Profil</p>
+                    <p className="text-[#191919] text-lg font-semibold">Lihat Profil</p>
                   </motion.div>
                 </div>
 
                 {/* Card Info */}
                 <div className="p-6 text-center bg-[#1a1a1a] border-t-2 border-[#AE8737]">
-                  <h3 className="text-xl font-bold text-white mb-1">{employee.name}</h3>
+                  <h3 className="text-xl font-bold text-[#191919] mb-1">{employee.name}</h3>
                   <p className="text-[#AE8737] font-semibold text-sm mb-1">{employee.title}</p>
                   <p className="text-gray-400 text-xs">{employee.specialty}</p>
                 </div>
@@ -215,7 +215,7 @@ export function StafKaryawan() {
           >
             {/* Backdrop */}
             <div 
-              className="absolute inset-0 bg-[#191919]/90 backdrop-blur-sm"
+              className="absolute inset-0 bg-white/90 backdrop-blur-sm"
               onClick={() => setSelectedEmployee(null)}
             />
 
@@ -231,7 +231,7 @@ export function StafKaryawan() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedEmployee(null)}
-                className="absolute top-4 right-4 z-50 p-2 bg-black/40 hover:bg-black/60 rounded-full transition-colors text-white shadow-md"
+                className="absolute top-4 right-4 z-50 p-2 bg-black/40 hover:bg-black/60 rounded-full transition-colors text-[#191919] shadow-md"
               >
                 <X className="w-5 h-5" />
               </button>

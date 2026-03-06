@@ -9,7 +9,7 @@ import { Card, CardContent } from "../components/ui/card";
 
 export function Kontak() {
   return (
-    <section className="py-24 bg-[#191919]">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block w-12 h-1 bg-[#AE8737] mb-6"></div>
@@ -31,7 +31,7 @@ export function Kontak() {
                 <div className="w-16 h-16 bg-[#AE8737]/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Phone className="w-8 h-8 text-[#AE8737] fill-[#AE8737]" />
                 </div>
-                <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Telepon</h3>
+                <h3 className="mb-3 text-[#191919] text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Telepon</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
                   +62 895 3040 7021
                 </span>
@@ -49,7 +49,7 @@ export function Kontak() {
                 <div className="w-16 h-16 bg-[#AE8737]/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Mail className="w-8 h-8 text-[#AE8737] fill-[#AE8737]" />
                 </div>
-                <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Email</h3>
+                <h3 className="mb-3 text-[#191919] text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Email</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide break-all">
                   kantorpengacaramas@gmail.com
                 </span>
@@ -69,7 +69,7 @@ export function Kontak() {
                 <div className="w-16 h-16 bg-[#AE8737]/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <MessageCircle className="w-8 h-8 text-[#AE8737] fill-[#AE8737]" />
                 </div>
-                <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">WhatsApp</h3>
+                <h3 className="mb-3 text-[#191919] text-xl font-semibold group-hover:text-[#AE8737] transition-colors">WhatsApp</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
                   +62 895 3040 7021
                 </span>
@@ -93,7 +93,7 @@ export function Kontak() {
                       <MapPin className="w-5 h-5 text-[#AE8737] fill-[#AE8737]" />
                     </div>
                     <div>
-                      <h3 className="mb-3 text-white text-xl font-semibold">
+                      <h3 className="mb-3 text-[#191919] text-xl font-semibold">
                         Alamat Kantor
                       </h3>
                       <a
@@ -121,17 +121,17 @@ export function Kontak() {
                        <Clock className="w-5 h-5 text-[#AE8737] fill-[#AE8737]" />
                     </div>
                     <div>
-                      <h3 className="mb-3 text-white text-xl font-semibold">
+                      <h3 className="mb-3 text-[#191919] text-xl font-semibold">
                         Jam Operasional
                       </h3>
                       <div className="text-gray-300 leading-relaxed space-y-1">
                         <div className="flex justify-between w-full max-w-[200px]">
                           <span>Senin - Jumat</span>
-                          <span className="text-white font-medium">09.00 - 17.00</span>
+                          <span className="text-[#191919] font-medium">09.00 - 17.00</span>
                         </div>
                         <div className="flex justify-between w-full max-w-[200px]">
                           <span>Sabtu</span>
-                          <span className="text-white font-medium">09.00 - 14.00</span>
+                          <span className="text-[#191919] font-medium">09.00 - 14.00</span>
                         </div>
                          <div className="flex justify-between w-full max-w-[200px] text-red-400">
                           <span>Minggu</span>

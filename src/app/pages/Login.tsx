@@ -41,11 +41,11 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#191919] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg shadow-xl p-8">
         <div className="flex flex-col items-center mb-8">
           <img src={logo} alt="M.A.S Law Firm" className="h-16 mb-6" />
-          <h1 className="text-2xl font-bold text-white mb-2">Admin Access</h1>
+          <h1 className="text-2xl font-bold text-[#191919] mb-2">Admin Access</h1>
           <p className="text-gray-400">Please enter your credentials</p>
         </div>
 
@@ -59,7 +59,7 @@ export function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email Address"
                 required
-                className="pl-10 bg-[#2a2a2a] border-gray-700 text-white placeholder:text-gray-500 focus:border-[#AE8737] focus:ring-[#AE8737] mb-4"
+                className="pl-10 bg-[#2a2a2a] border-gray-700 text-[#191919] placeholder:text-gray-500 focus:border-[#AE8737] focus:ring-[#AE8737] mb-4"
               />
             </div>
             <div className="relative">
@@ -70,7 +70,7 @@ export function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 required
-                className="pl-10 bg-[#2a2a2a] border-gray-700 text-white placeholder:text-gray-500 focus:border-[#AE8737] focus:ring-[#AE8737]"
+                className="pl-10 bg-[#2a2a2a] border-gray-700 text-[#191919] placeholder:text-gray-500 focus:border-[#AE8737] focus:ring-[#AE8737]"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ export function Login() {
           <Button 
             type="submit" 
             disabled={loading}
-            className="w-full bg-[#AE8737] hover:bg-[#8f6e2d] text-white py-2"
+            className="w-full bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] py-2"
           >
             {loading ? 'Logging in...' : 'Login'}
           </Button>

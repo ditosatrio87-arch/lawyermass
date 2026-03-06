@@ -368,7 +368,7 @@ useEffect(() => {
             </div>
 
             <div className="flex gap-3 pt-4 border-t border-slate-100">
-              <Button type="submit" className="bg-[#AE8737] hover:bg-[#8f6e2d] text-white px-6">
+              <Button type="submit" className="bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] px-6">
                 {editingArticle ? 'Update Article' : 'Create Article'}
               </Button>
               <Button
@@ -395,7 +395,7 @@ useEffect(() => {
         </div>
         <Button 
           onClick={() => setShowForm(true)} 
-          className="bg-[#AE8737] hover:bg-[#8f6e2d] text-white flex items-center gap-2"
+          className="bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] flex items-center gap-2"
         >
           <Plus className="w-4 h-4" /> Add New Article
         </Button>

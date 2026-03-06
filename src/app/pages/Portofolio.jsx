@@ -60,7 +60,7 @@ export function Portofolio() {
   ];
 
   return (
-    <section className="py-24 bg-[#191919] text-white relative overflow-hidden">
+    <section className="py-24 bg-white text-[#191919] relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="w-12 h-1 bg-[#AE8737] mx-auto mb-6"></div>
@@ -122,7 +122,7 @@ export function Portofolio() {
         {/* Close Button */}
         <button
           onClick={() => setSelectedCase(null)}
-          className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black text-white p-2 rounded-full transition"
+          className="absolute top-4 right-4 z-10 bg-black/70 hover:bg-black text-[#191919] p-2 rounded-full transition"
         >
           <X className="w-5 h-5" />
         </button>

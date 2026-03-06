@@ -25,11 +25,11 @@ export function Beranda() {
             </span>
           </div>
 
-          <h1 className="mb-6 max-w-4xl mx-auto leading-tight text-white">
+          <h1 className="mb-6 max-w-4xl mx-auto leading-tight text-[#191919]">
             Solusi Hukum Profesional untuk Kesuksesan Bisnis Anda
           </h1>
 
-          <p className="mb-10 max-w-2xl mx-auto text-lg text-white/90 leading-relaxed">
+          <p className="mb-10 max-w-2xl mx-auto text-lg text-[#191919]/90 leading-relaxed">
             Konsultan hukum terpercaya dengan pengalaman di bidang hukum korporasi,
             pendaftaran merek, dan pendirian perusahaan.
           </p>
@@ -43,7 +43,7 @@ export function Beranda() {
               >
                 <Button
                   size="lg"
-                  className="bg-[#AE8737] hover:bg-[#8f6e2d] text-white px-8 shadow-lg shadow-[#AE8737]/20"
+                  className="bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] px-8 shadow-lg shadow-[#AE8737]/20"
                 >
                   Our Company Profile <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
@@ -53,7 +53,7 @@ export function Beranda() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#191919] px-8"
+                  className="bg-transparent border-2 border-white text-[#191919] hover:bg-white hover:text-[#191919] px-8"
                 >
                   Lihat Layanan
                 </Button>
@@ -68,7 +68,7 @@ export function Beranda() {
       </section>
 
       {/* SERVICE SECTION */}
-      <section className="py-24 bg-[#191919] text-white">
+      <section className="py-24 bg-white text-black">
         <div className="container mx-auto px-6">
 
           {/* Title */}
@@ -149,7 +149,7 @@ export function Beranda() {
             <Link to="/layanan-kami">
               <Button
                 size="lg"
-                className="bg-[#AE8737] hover:bg-[#8f6e2d] text-white px-8"
+                className="bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] px-8"
               >
                 Lihat Semua Layanan
               </Button>

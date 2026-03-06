@@ -99,7 +99,7 @@ export function Admin() {
 
       {/* Mobile Toggle */}
       <button 
-        className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-[#191919] text-white rounded-md"
+        className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-white text-[#191919] rounded-md"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         {sidebarOpen ? <X /> : <Menu />}
@@ -109,7 +109,7 @@ export function Admin() {
           SIDEBAR
       =============================== */}
       <aside className={`
-        fixed lg:sticky top-0 left-0 h-screen w-64 bg-[#191919] text-white flex flex-col justify-between
+        fixed lg:sticky top-0 left-0 h-screen w-64 bg-white text-[#191919] flex flex-col justify-between
         transform transition-transform duration-300 z-40
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
