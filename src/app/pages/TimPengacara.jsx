@@ -89,11 +89,10 @@ className="cursor-pointer text-center"
 <div className="relative flex justify-center mb-6">
 
 <div className="w-[320px] h-[320px] rounded-full overflow-hidden border-4 border-[#AE8737] shadow-xl">
-
 <img
 src={lawyer.image}
 alt={lawyer.name}
-className="w-full h-full object-cover"
+className="w-full h-full object-cover object-[center_15%] scale-110"
 />
 
 </div>
@@ -184,7 +183,7 @@ className="absolute top-4 right-4"
 <img
 src={selectedLawyer.image}
 alt={selectedLawyer.name}
-className="w-40 h-40 object-cover rounded-full mx-auto mb-6"
+className="w-40 h-40 object-cover object-[center_15%] scale-110 rounded-full mx-auto mb-6"
 />
 
 <h3 className="text-2xl font-bold mb-2">
