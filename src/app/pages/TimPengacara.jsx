@@ -88,7 +88,7 @@ className="cursor-pointer text-center"
 
 <div className="relative flex justify-center mb-6">
 
-<div className="w-[320px] h-[320px] rounded-full overflow-hidden border-4 border-[#AE8737] shadow-xl">
+<div className="w-[380px] h-[380px] rounded-full overflow-hidden border-4 border-[#AE8737] shadow-xl">
 <img
 src={lawyer.image}
 alt={lawyer.name}
