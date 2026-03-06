@@ -60,7 +60,7 @@ export function Beranda() {
               </Link>
             </div>
 
-            <p className="mt-6 text-sm text-gray-300 font-light tracking-wide max-w-md mx-auto">
+            <p className="mt-6 text-sm text-gray-300 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto">
               Jelajahi profil lengkap dan keunggulan firma kami.
             </p>
           </div>
@@ -77,7 +77,7 @@ export function Beranda() {
             <h2 className="text-3xl font-bold mb-4">
               Layanan Hukum Profesional
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-slate-300 max-w-2xl mx-auto">
               Kami menyediakan layanan hukum strategis untuk membantu bisnis
               berkembang secara aman dan sesuai regulasi yang berlaku.
             </p>
@@ -92,10 +92,10 @@ export function Beranda() {
               className="group bg-[#252525] p-8 rounded-lg border border-[#2f2f2f] hover:border-[#AE8737] transition duration-300"
             >
               <Scale className="w-10 h-10 text-[#AE8737] mb-4" />
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-[#AE8737]">
+              <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#AE8737]">
                 Corporate Law
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed">
                 Pendampingan hukum profesional untuk perusahaan dan aktivitas bisnis.
               </p>
             </Link>
@@ -106,10 +106,10 @@ export function Beranda() {
               className="group bg-[#252525] p-8 rounded-lg border border-[#2f2f2f] hover:border-[#AE8737] transition duration-300"
             >
               <Building2 className="w-10 h-10 text-[#AE8737] mb-4" />
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-[#AE8737]">
+              <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#AE8737]">
                 Pendirian Perusahaan
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed">
                 Layanan pendirian PT, PT PMA, dan legalitas usaha secara profesional.
               </p>
             </Link>
@@ -120,10 +120,10 @@ export function Beranda() {
               className="group bg-[#252525] p-8 rounded-lg border border-[#2f2f2f] hover:border-[#AE8737] transition duration-300"
             >
               <ShieldCheck className="w-10 h-10 text-[#AE8737] mb-4" />
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-[#AE8737]">
+              <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#AE8737]">
                 Pendaftaran Haki
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed">
                 Perlindungan hukum atas merek dan kekayaan intelektual bisnis Anda.
               </p>
             </Link>
@@ -134,10 +134,10 @@ export function Beranda() {
               className="group bg-[#252525] p-8 rounded-lg border border-[#2f2f2f] hover:border-[#AE8737] transition duration-300"
             >
               <FileText className="w-10 h-10 text-[#AE8737] mb-4" />
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-[#AE8737]">
+              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#AE8737]">
                 Litigasi & Mediasi
               </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-slate-300 text-sm leading-relaxed">
                 Penyelesaian sengketa secara profesional dan strategis.
               </p>
             </Link>
