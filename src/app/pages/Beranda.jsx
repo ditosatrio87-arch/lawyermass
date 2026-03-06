@@ -53,14 +53,14 @@ export function Beranda() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent border-2 border-white text-[#191919] hover:bg-white hover:text-white px-8"
+                  className="bg-transparent border-2 border-white text-white hover:bg-[#ffffff00] hover:text-white px-8"
                 >
                   Lihat Layanan
                 </Button>
               </Link>
             </div>
 
-            <p className="mt-6 text-sm text-gray-300 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto">
+            <p className="mt-6 text-sm text-white-300 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto">
               Jelajahi profil lengkap dan keunggulan firma kami.
             </p>
           </div>
