@@ -55,13 +55,13 @@ education: []
 
 return (
 
-<section className="py-24 bg-[#191919] min-h-screen">
+<section className="py-24 bg-white min-h-screen">
 
 <div className="container mx-auto px-6">
 
 <div className="text-center mb-16">
 <div className="inline-block w-12 h-1 bg-[#AE8737] mb-6"></div>
-<h2 className="mb-4 text-white">Tim Pengacara Kami</h2>
+<h2 className="mb-4 text-[#191919]">Tim Pengacara Kami</h2>
 
 <p className="text-gray-300 max-w-2xl mx-auto text-lg">
 Profesional hukum berpengalaman yang berdedikasi melindungi kepentingan Anda
@@ -106,14 +106,14 @@ className="absolute inset-0 flex items-center justify-center"
 >
 
 <div className="w-16 h-16 rounded-full bg-[#AE8737] flex items-center justify-center shadow-lg">
-<Plus className="w-8 h-8 text-white"/>
+<Plus className="w-8 h-8 text-[#191919]"/>
 </div>
 
 </motion.div>
 
 </div>
 
-<h3 className="text-2xl font-bold text-white mb-2">
+<h3 className="text-2xl font-bold text-[#191919] mb-2">
 {lawyer.name}
 </h3>
 
@@ -135,7 +135,7 @@ className="flex items-center justify-center w-10 h-10 rounded-full border border
 onClick={(e) => e.stopPropagation()}
 >
 
-<Linkedin className="w-5 h-5 text-white"/>
+<Linkedin className="w-5 h-5 text-[#191919]"/>
 
 </a>
 
