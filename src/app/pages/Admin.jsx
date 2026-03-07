@@ -115,8 +115,8 @@ export function Admin() {
       `}>
 
         <div>
-          <div className="p-6 border-b border-[#2a2a2a] hover:text-white">
-            <h1 className="text-lg font-bold text-[#AE8737]">ADMIN PANEL</h1>
+          <div className="p-6 border-b border-[#2a2a2a]">
+            <h1 className="text-lg font-bold text-[#AE8737] hover:text-white">ADMIN PANEL</h1>
             <p className="text-xs text-slate-400">M.A.S. Law Firm</p>
           </div>
 
