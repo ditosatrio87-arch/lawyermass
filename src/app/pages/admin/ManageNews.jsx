@@ -452,86 +452,116 @@ useEffect(() => {
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm">Status</th>
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm text-right">Actions</th>
                 </tr>
-              </thead>
-              <tbody>
-                {filteredArticles.length > 0 ? (
-                  filteredArticles.map((article) => (
-                    <tr key={article.id} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                      <td className="py-3 px-4">
-                        <div className="w-12 h-12 rounded bg-slate-100 overflow-hidden">
-                          {article.image ? (
-                            <img src={article.image_url} alt="" className="w-full h-full object-cover" />
-                          ) : (
-                            <ImageIcon className="w-5 h-5 text-slate-400 m-auto mt-3" />
-                          )}
-                        </div>
-                      </td>
-                      <td className="py-3 px-4">
-                        <div className="font-medium text-[#191919] line-clamp-1">{article.title}</div>
-                        </td>
+              </thead><tbody>
+{filteredArticles.length > 0 ? (
+  filteredArticles.map((article) => (
+    <tr
+      key={article.id}
+      className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors"
+    >
 
-<td className="py-3 px-4 text-sm text-slate-500">
-  {article.admin_profiles?.name || "Unknown"}
-</td>
-                        {article.featured && (
-                          <span className="text-xs bg-[#AE8737]/10 text-[#AE8737] px-2 py-0.5 rounded-full mt-1 inline-block">
-                            Featured
-                          </span>
-                        )}
-                      </td>
-                      <td className="py-3 px-4 text-sm text-slate-500">
-  {article.category}
-</td>
+      {/* IMAGE */}
+      <td className="py-3 px-4">
+        <div className="w-12 h-12 rounded bg-slate-100 overflow-hidden">
+          {article.image_url ? (
+            <img
+              src={article.image_url}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <ImageIcon className="w-5 h-5 text-slate-400 m-auto mt-3" />
+          )}
+        </div>
+      </td>
 
-<td className="py-3 px-4 text-sm text-slate-500">
-  {article.admin_profiles?.name || "-"}
-</td>
-                      <td className="py-3 px-4 text-sm text-slate-500">{article.date}</td>
-                      <td className="py-3 px-4">
-                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                          article.status === 'Published' 
-                            ? 'bg-green-100 text-green-700' 
-                            : 'bg-yellow-100 text-yellow-700'
-                        }`}>
-                          {article.status === 'Published' ? <Check className="w-3 h-3" /> : <AlertCircle className="w-3 h-3" />}
-                          {article.status}
-                        </span>
-                      </td>
-                      <td className="py-3 px-4 text-right">
-                        <div className="flex justify-end gap-2">
-                          <button
-                            onClick={() => window.open(`/news/${article.slug}`, '_blank')}
-                            className="p-2 hover:bg-blue-50 rounded text-slate-500 hover:text-blue-500 transition-colors"
-                            title="Preview"
-                          >
-                            <Eye className="w-4 h-4" />
-                          </button>
-                          <button
-                            onClick={() => handleEdit(article)}
-                            className="p-2 hover:bg-slate-100 rounded text-slate-500 hover:text-[#AE8737] transition-colors"
-                            title="Edit"
-                          >
-                            <Edit2 className="w-4 h-4" />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(article.id)}
-                            className="p-2 hover:bg-red-50 rounded text-slate-500 hover:text-red-500 transition-colors"
-                            title="Delete"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="py-8 text-center text-slate-500">
-                      No articles found. Try changing your search or filter.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
+      {/* TITLE */}
+      <td className="py-3 px-4">
+        <div className="font-medium text-[#191919] line-clamp-1">
+          {article.title}
+        </div>
+
+        {article.featured && (
+          <span className="text-xs bg-[#AE8737]/10 text-[#AE8737] px-2 py-0.5 rounded-full mt-1 inline-block">
+            Featured
+          </span>
+        )}
+      </td>
+
+      {/* AUTHOR */}
+      <td className="py-3 px-4 text-sm text-slate-500">
+        {article.admin_profiles?.name || "-"}
+      </td>
+
+      {/* CATEGORY */}
+      <td className="py-3 px-4 text-sm text-slate-500">
+        {article.category}
+      </td>
+
+      {/* DATE */}
+      <td className="py-3 px-4 text-sm text-slate-500">
+        {article.date}
+      </td>
+
+      {/* STATUS */}
+      <td className="py-3 px-4">
+        <span
+          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
+            article.status === "Published"
+              ? "bg-green-100 text-green-700"
+              : "bg-yellow-100 text-yellow-700"
+          }`}
+        >
+          {article.status === "Published" ? (
+            <Check className="w-3 h-3" />
+          ) : (
+            <AlertCircle className="w-3 h-3" />
+          )}
+          {article.status}
+        </span>
+      </td>
+
+      {/* ACTIONS */}
+      <td className="py-3 px-4 text-right">
+        <div className="flex justify-end gap-2">
+
+          <button
+            onClick={() => window.open(`/news/${article.slug}`, "_blank")}
+            className="p-2 hover:bg-blue-50 rounded text-slate-500 hover:text-blue-500 transition-colors"
+            title="Preview"
+          >
+            <Eye className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => handleEdit(article)}
+            className="p-2 hover:bg-slate-100 rounded text-slate-500 hover:text-[#AE8737] transition-colors"
+            title="Edit"
+          >
+            <Edit2 className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => handleDelete(article.id)}
+            className="p-2 hover:bg-red-50 rounded text-slate-500 hover:text-red-500 transition-colors"
+            title="Delete"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+
+        </div>
+      </td>
+
+    </tr>
+  ))
+) : (
+  <tr>
+    <td colSpan="7" className="py-8 text-center text-slate-500">
+      No articles found. Try changing your search or filter.
+    </td>
+  </tr>
+)}
+</tbody>
             </table>
           </div>
         </CardContent>
