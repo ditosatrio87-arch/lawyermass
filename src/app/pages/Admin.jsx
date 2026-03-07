@@ -116,7 +116,7 @@ export function Admin() {
 
         <div>
           <div className="p-6 border-b border-[#2a2a2a]">
-            <h1 className="text-lg font-bold text-[#AE8737] hover:text-white">ADMIN PANEL</h1>
+            <h1 className="text-lg font-bold text-[#AE8737]">ADMIN PANEL</h1>
             <p className="text-xs text-slate-400">M.A.S. Law Firm</p>
           </div>
 
@@ -131,7 +131,7 @@ export function Admin() {
                         setActiveTab(item.id);
                         setSidebarOpen(false);
                       }}
-                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition hover:text-white ${
                         activeTab === item.id
                           ? 'bg-[#AE8737]'
                           : 'hover:bg-[#2a2a2a]'
