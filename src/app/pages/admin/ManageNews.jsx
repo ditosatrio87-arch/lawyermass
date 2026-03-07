@@ -28,28 +28,27 @@ export function ManageNews({ articles, setArticles }) {
   // ambil admin profiles
   const { data: adminData, error: adminError } = await supabase
     .from('admin_profiles')
-    .select('*');
+    .select('id,name');
 
   if (adminError) {
     console.error(adminError);
     return;
   }
 
-  // gabungkan author
-  const merged = newsData.map(article => {
-
-    const author = adminData.find(
-      admin => admin.id === article.created_by
-    );
-
-    return {
-      ...article,
-      author_name: author?.name || "-"
-    };
-
+  // buat map admin id -> name
+  const adminMap = {};
+  adminData.forEach(admin => {
+    adminMap[String(admin.id)] = admin.name;
   });
 
-  setArticles(merged);
+  // gabungkan author
+  const mergedArticles = newsData.map(article => ({
+    ...article,
+    author_name: adminMap[String(article.created_by)] || "-"
+  }));
+
+  setArticles(mergedArticles);
+
 };
 
 useEffect(() => {
