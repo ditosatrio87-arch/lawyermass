@@ -35,7 +35,7 @@ export function ManageNews({ articles, setArticles }) {
     return;
   }
 
-  // gabungkan author ke artikel
+  // gabungkan author
   const merged = newsData.map(article => {
 
     const author = adminData.find(
@@ -50,23 +50,6 @@ export function ManageNews({ articles, setArticles }) {
   });
 
   setArticles(merged);
-};
-  const { data, error } = await supabase
-    .from('news')
-.select(`
-  *,
-  admin_profiles:created_by (
-    name
-  )
-`)
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error(error);
-    return;
-  }
-
-  setArticles(data);
 };
 
 useEffect(() => {
