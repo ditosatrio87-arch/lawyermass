@@ -33,12 +33,17 @@ bio: "Muhamad Amar adalah pendiri M.A.S Law Firm dengan pengalaman di bidang huk
 email: "amar@lawyermas.com",
 phone: "+62 812-3456-7890",
 linkedin: "https://www.linkedin.com/in/muhamadamar",
-experience: [* Hukum Korporasi & M&A: Pengelolaan struktur hukum dalam transaksi merger dan akuisisi, due diligence, serta negosiasi kontrak kompleks.
-* Tata Kelola Perusahaan: Penyusunan kebijakan internal, compliance framework, dan penerapan praktik tata kelola perusahaan sesuai regulasi.
-* Kepatuhan Regulasi: Konsultasi kepatuhan terhadap UU Perseroan Terbatas, UU Pasar Modal, serta regulasi sektoral.],
-education: [- Magister Manajemen (M.M.) 2023 - UPN Veteran Jakarta
-- Sarjana Hukum (S.H.) - 2024 Universitas Duta Bangsa Surakarta
-- Sarjana Manajemen (S.M.) - 2021 UPN Veteran Jakarta]
+experience: [
+"Hukum Korporasi & M&A: Pengelolaan struktur hukum dalam transaksi merger dan akuisisi, due diligence, serta negosiasi kontrak kompleks.",
+"Tata Kelola Perusahaan: Penyusunan kebijakan internal, compliance framework, dan penerapan praktik tata kelola perusahaan sesuai regulasi.",
+"Kepatuhan Regulasi: Konsultasi kepatuhan terhadap UU Perseroan Terbatas, UU Pasar Modal, serta regulasi sektoral.
+],
+  
+education: [
+"Magister Manajemen (M.M.) 2023 - UPN Veteran Jakarta",
+"Sarjana Hukum (S.H.) - 2024 Universitas Duta Bangsa Surakarta",
+"Sarjana Manajemen (S.M.) - 2021 UPN Veteran Jakarta"
+]
 },
 
 {
@@ -51,13 +56,18 @@ bio: "Anggi Khairina adalah Senior Partner di M.A.S Law Firm dengan spesialisasi
 email: "a.khairina@maslawfirm.com",
 phone: "+62 812-8198-8649",
 linkedin: "https://www.linkedin.com/in/anggi-khairina-hasibuan",
-experience: [* Kekayaan Intelektual & Merek Dagang: Pendaftaran, perlindungan, dan litigasi merek dagang, termasuk penanganan ratusan pendaftaran dan puluhan sengketa merek di Indonesia. 
-* Dokumentasi Korporat: Penyusunan dan peninjauan berbagai dokumen hukum, seperti kontrak komersial, perjanjian bisnis, dan lisensi. 
-* Konsultasi Strategis IP: Pendampingan bagi startup dan perusahaan dalam membangun serta mengelola portofolio kekayaan intelektual.],
-education: [- Sarjana Kimia (S.Si) 2009 - 2015 Universitas Negeri Surabaya
-- Magister Ilmu dan Teknologi Forensik (M.Si) 2015 - 2018 Universitas Airlangga
-- Sarjana Ilmu Hukum (S.H) 2021 - 2024 Universitas Duta Bangsa Surakarta
-- Sarjana Ilmu Psikilogi (S.Psi) 2021-sekarang Universitas Teknologi Nusantara]
+experience: [
+"Kekayaan Intelektual & Merek Dagang: Pendaftaran, perlindungan, dan litigasi merek dagang, termasuk penanganan ratusan pendaftaran dan puluhan sengketa merek di Indonesia.",
+"Dokumentasi Korporat: Penyusunan dan peninjauan berbagai dokumen hukum, seperti kontrak komersial, perjanjian bisnis, dan lisensi.",
+"Konsultasi Strategis IP: Pendampingan bagi startup dan perusahaan dalam membangun serta mengelola portofolio kekayaan intelektual."
+],
+  
+education: [
+"Sarjana Kimia (S.Si) 2009 - 2015 Universitas Negeri Surabaya",
+"Magister Ilmu dan Teknologi Forensik (M.Si) 2015 - 2018 Universitas Airlangga",
+"Sarjana Ilmu Hukum (S.H) 2021 - 2024 Universitas Duta Bangsa Surakarta",
+"Sarjana Ilmu Psikilogi (S.Psi) 2021-sekarang Universitas Teknologi Nusantara"
+]
 }
 
 ];
