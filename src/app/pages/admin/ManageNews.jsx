@@ -13,6 +13,44 @@ export function ManageNews({ articles, setArticles }) {
   const [imagePreview, setImagePreview] = useState('');
 
   const fetchArticles = async () => {
+
+  // ambil news
+  const { data: newsData, error: newsError } = await supabase
+    .from('news')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (newsError) {
+    console.error(newsError);
+    return;
+  }
+
+  // ambil admin profiles
+  const { data: adminData, error: adminError } = await supabase
+    .from('admin_profiles')
+    .select('*');
+
+  if (adminError) {
+    console.error(adminError);
+    return;
+  }
+
+  // gabungkan author ke artikel
+  const merged = newsData.map(article => {
+
+    const author = adminData.find(
+      admin => admin.id === article.created_by
+    );
+
+    return {
+      ...article,
+      author_name: author?.name || "-"
+    };
+
+  });
+
+  setArticles(merged);
+};
   const { data, error } = await supabase
     .from('news')
 .select(`
@@ -490,7 +528,7 @@ useEffect(() => {
 
       {/* AUTHOR */}
       <td className="py-3 px-4 text-sm text-slate-500">
-        {article.admin_profiles?.name || "-"}
+        {article.author_name}
       </td>
 
       {/* CATEGORY */}
