@@ -446,6 +446,7 @@ useEffect(() => {
                 <tr className="border-b border-slate-100 text-left">
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm w-20">Image</th>
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm">Title</th>
+                    <th className="py-4 px-4 font-semibold text-slate-600 text-sm">Author</th>
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm">Category</th>
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm">Date</th>
                   <th className="py-4 px-4 font-semibold text-slate-600 text-sm">Status</th>
@@ -467,6 +468,11 @@ useEffect(() => {
                       </td>
                       <td className="py-3 px-4">
                         <div className="font-medium text-[#191919] line-clamp-1">{article.title}</div>
+                        </td>
+
+<td className="py-3 px-4 text-sm text-slate-500">
+  {article.admin_profiles?.name || "Unknown"}
+</td>
                         {article.featured && (
                           <span className="text-xs bg-[#AE8737]/10 text-[#AE8737] px-2 py-0.5 rounded-full mt-1 inline-block">
                             Featured
