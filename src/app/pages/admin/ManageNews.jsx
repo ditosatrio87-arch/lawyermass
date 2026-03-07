@@ -14,40 +14,27 @@ export function ManageNews({ articles, setArticles }) {
 
   const fetchArticles = async () => {
 
-  // ambil news
-  const { data: newsData, error: newsError } = await supabase
+  const { data, error } = await supabase
     .from('news')
-    .select('*')
+    .select(`
+      *,
+      admin_profiles!news_created_by_fkey (
+        name
+      )
+    `)
     .order('created_at', { ascending: false });
 
-  if (newsError) {
-    console.error(newsError);
+  if (error) {
+    console.error(error);
     return;
   }
 
-  // ambil admin profiles
-  const { data: adminData, error: adminError } = await supabase
-    .from('admin_profiles')
-    .select('id,name');
-
-  if (adminError) {
-    console.error(adminError);
-    return;
-  }
-
-  // buat map admin id -> name
-  const adminMap = {};
-  adminData.forEach(admin => {
-    adminMap[String(admin.id)] = admin.name;
-  });
-
-  // gabungkan author
-  const mergedArticles = newsData.map(article => ({
+  const formatted = data.map(article => ({
     ...article,
-    author_name: adminMap[String(article.created_by)] || "-"
+    author_name: article.admin_profiles?.name || "-"
   }));
 
-  setArticles(mergedArticles);
+  setArticles(formatted);
 
 };
 
