@@ -121,7 +121,7 @@ useEffect(() => {
     image_url: formData.image,   // penting: nama kolom di DB
     status: formData.status,
     featured: formData.featured,
-    date: formData.date
+    date: formData.date,
     
     created_by: user?.id 
   };
