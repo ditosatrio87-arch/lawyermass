@@ -15,9 +15,9 @@ export function ManageNews({ articles, setArticles }) {
   const fetchArticles = async () => {
   const { data, error } = await supabase
     .from('news')
-    .select(`
+.select(`
   *,
-  admin_profiles (
+  admin_profiles:created_by (
     name
   )
 `)
