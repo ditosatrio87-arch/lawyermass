@@ -15,7 +15,12 @@ export function ManageNews({ articles, setArticles }) {
   const fetchArticles = async () => {
   const { data, error } = await supabase
     .from('news')
-    .select('*')
+    .select(`
+  *,
+  admin_profiles (
+    name
+  )
+`)
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -468,7 +473,13 @@ useEffect(() => {
                           </span>
                         )}
                       </td>
-                      <td className="py-3 px-4 text-sm text-slate-500">{article.category}</td>
+                      <td className="py-3 px-4 text-sm text-slate-500">
+  {article.category}
+</td>
+
+<td className="py-3 px-4 text-sm text-slate-500">
+  {article.admin_profiles?.name || "-"}
+</td>
                       <td className="py-3 px-4 text-sm text-slate-500">{article.date}</td>
                       <td className="py-3 px-4">
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
@@ -509,7 +520,7 @@ useEffect(() => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="py-8 text-center text-slate-500">
+                    <td colSpan="7" className="py-8 text-center text-slate-500">
                       No articles found. Try changing your search or filter.
                     </td>
                   </tr>
