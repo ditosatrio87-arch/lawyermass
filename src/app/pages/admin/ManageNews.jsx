@@ -110,6 +110,8 @@ useEffect(() => {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
+  const { data: { user } } = await supabase.auth.getUser();
+
   const finalData = {
     title: formData.title,
     slug: formData.slug,
@@ -120,6 +122,8 @@ useEffect(() => {
     status: formData.status,
     featured: formData.featured,
     date: formData.date
+    
+    created_by: user?.id 
   };
 
   if (editingArticle) {
