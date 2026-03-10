@@ -1,6 +1,6 @@
 import { supabase } from '../../../lib/supabase';
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Edit2, Trash2, X, Search, Image as ImageIcon, Eye, Check, AlertCircle } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Search, Eye } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 
@@ -8,13 +8,12 @@ export function ManageNews({ articles, setArticles }) {
 
 const textareaRef = useRef(null);
 
-const [showForm, setShowForm] = useState(false);
-const [editingArticle, setEditingArticle] = useState(null);
-const [searchTerm, setSearchTerm] = useState('');
-const [filterStatus, setFilterStatus] = useState('All');
-const [imagePreview, setImagePreview] = useState('');
+const [showForm,setShowForm]=useState(false);
+const [editingArticle,setEditingArticle]=useState(null);
+const [searchTerm,setSearchTerm]=useState('');
+const [imagePreview,setImagePreview]=useState('');
 
-const [formData, setFormData] = useState({
+const [formData,setFormData]=useState({
 title:'',
 slug:'',
 category:'Corporate Law',
@@ -26,13 +25,14 @@ featured:false,
 date:new Date().toISOString().split('T')[0]
 });
 
-// ============================
+
+// ======================
 // FETCH ARTICLES
-// ============================
+// ======================
 
-const fetchArticles = async () => {
+const fetchArticles=async()=>{
 
-const { data, error } = await supabase
+const {data,error}=await supabase
 .from('news')
 .select("*, admin_profiles!news_created_by_fkey ( name )")
 .order('created_at',{ascending:false});
@@ -55,9 +55,10 @@ useEffect(()=>{
 fetchArticles();
 },[]);
 
-// ============================
-// SLUG AUTO
-// ============================
+
+// ======================
+// AUTO SLUG
+// ======================
 
 useEffect(()=>{
 
@@ -74,9 +75,10 @@ setFormData(prev=>({...prev,slug}));
 
 },[formData.title,editingArticle]);
 
-// ============================
+
+// ======================
 // MARKDOWN TOOLBAR
-// ============================
+// ======================
 
 const insertMarkdown=(before,after="")=>{
 
@@ -95,23 +97,21 @@ selected+
 after+
 formData.content.substring(end);
 
-setFormData(prev=>({
-...prev,
-content:newText
-}));
+setFormData(prev=>({...prev,content:newText}));
 
 };
 
-const addBold=()=>insertMarkdown("","");
-const addItalic=()=>insertMarkdown("","");
+const addBold=()=>insertMarkdown("**","**");
+const addItalic=()=>insertMarkdown("*","*");
 const addHeading=()=>insertMarkdown("\n## ");
 const addBullet=()=>insertMarkdown("\n- ");
 const addNumber=()=>insertMarkdown("\n1. ");
-const addLink=()=>insertMarkdown(""text" (https://)");
+const addLink=()=>insertMarkdown("[text](https://)");
 
-// ============================
-// INPUT
-// ============================
+
+// ======================
+// INPUT CHANGE
+// ======================
 
 const handleInputChange=(e)=>{
 
@@ -124,9 +124,10 @@ setFormData(prev=>({
 
 };
 
-// ============================
-// IMAGE
-// ============================
+
+// ======================
+// IMAGE UPLOAD
+// ======================
 
 const handleImageChange=async(e)=>{
 
@@ -134,16 +135,16 @@ const file=e.target.files[0];
 if(!file) return;
 
 if(!file.type.startsWith("image/")){
-alert("File must be an image");
+alert("File must be image");
 return;
 }
 
-if(file.size>210241024){
-alert("Max image size is 2MB");
+if(file.size>2*1024*1024){
+alert("Max size 2MB");
 return;
 }
 
-const fileName="${Date.now()}-${file.name}";
+const fileName=`${Date.now()}-${file.name}`;
 
 const {error}=await supabase.storage
 .from('news-images')
@@ -167,9 +168,10 @@ image:data.publicUrl
 
 };
 
-// ============================
+
+// ======================
 // SUBMIT
-// ============================
+// ======================
 
 const handleSubmit=async(e)=>{
 
@@ -211,9 +213,10 @@ setShowForm(false);
 
 };
 
-// ============================
+
+// ======================
 // DELETE
-// ============================
+// ======================
 
 const handleDelete=async(id)=>{
 
@@ -228,9 +231,10 @@ fetchArticles();
 
 };
 
-// ============================
+
+// ======================
 // EDIT
-// ============================
+// ======================
 
 const handleEdit=(article)=>{
 
@@ -241,9 +245,10 @@ setShowForm(true);
 
 };
 
-// ============================
+
+// ======================
 // RESET
-// ============================
+// ======================
 
 const resetForm=()=>{
 
@@ -264,37 +269,53 @@ setImagePreview('');
 
 };
 
-// ============================
+
+// ======================
 // FILTER
-// ============================
+// ======================
 
 const filteredArticles=articles.filter(article=>{
 
-const matchesSearch=article.title.toLowerCase().includes(searchTerm.toLowerCase());
-const matchesStatus=filterStatus==="All" || article.status===filterStatus;
+const matchesSearch=article.title
+.toLowerCase()
+.includes(searchTerm.toLowerCase());
 
-return matchesSearch && matchesStatus;
+return matchesSearch;
 
 });
 
-// ============================
+
+// ======================
 // FORM VIEW
-// ============================
+// ======================
 
 if(showForm){
 
 return(
 
-<Card className="border-none shadow-md"><CardContent className="p-6"><div className="flex justify-between items-center mb-6"><h3 className="text-xl font-bold text-[#191919]">
+<Card className="border-none shadow-md">
+
+<CardContent className="p-6">
+
+<div className="flex justify-between items-center mb-6">
+
+<h3 className="text-xl font-bold text-[#191919]">
 {editingArticle?'Edit Article':'Add New Article'}
-</h3><button
+</h3>
+
+<button
 onClick={()=>{setShowForm(false);resetForm();}}
 className="text-slate-400 hover:text-slate-600"
-
-«»
-
+>
 <X className="w-6 h-6"/>
-</button></div><form onSubmit={handleSubmit} className="space-y-6"><input
+</button>
+
+</div>
+
+
+<form onSubmit={handleSubmit} className="space-y-6">
+
+<input
 type="text"
 name="title"
 value={formData.title}
@@ -312,18 +333,25 @@ rows="3"
 className="w-full px-4 py-2 border border-slate-300 rounded-lg"
 />
 
+
 {/* TOOLBAR */}
 
 <div className="flex flex-wrap gap-2">
 
 <button type="button" onClick={addHeading} className="px-3 py-1 border rounded hover:bg-slate-100">H</button>
+
 <button type="button" onClick={addBold} className="px-3 py-1 border rounded font-bold hover:bg-slate-100">B</button>
+
 <button type="button" onClick={addItalic} className="px-3 py-1 border rounded italic hover:bg-slate-100">I</button>
-<button type="button" onClick={addBullet} className="px-3 py-1 border rounded hover:bg-slate-100">• List</button>
-<button type="button" onClick={addNumber} className="px-3 py-1 border rounded hover:bg-slate-100">1. List</button>
+
+<button type="button" onClick={addBullet} className="px-3 py-1 border rounded hover:bg-slate-100">•</button>
+
+<button type="button" onClick={addNumber} className="px-3 py-1 border rounded hover:bg-slate-100">1.</button>
+
 <button type="button" onClick={addLink} className="px-3 py-1 border rounded hover:bg-slate-100">Link</button>
 
 </div>
+
 
 <textarea
 ref={textareaRef}
@@ -334,7 +362,10 @@ rows="12"
 className="w-full px-4 py-2 border border-slate-300 rounded-lg font-mono"
 />
 
-<Button type="submit" className="bg-[#AE8737] hover:bg-[#8f6e2d] text-black">
+<Button
+type="submit"
+className="bg-[#AE8737] hover:bg-[#8f6e2d] text-black"
+>
 Save Article
 </Button>
 
@@ -349,45 +380,31 @@ Save Article
 }
 
 
-// ============================
+// ======================
 // TABLE VIEW
-// ============================
+// ======================
 
 return(
 
 <div className="space-y-6">
 
-<div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-
-<div>
+<div className="flex justify-between items-center">
 
 <h2 className="text-2xl font-bold text-[#191919]">
 Manage News
 </h2>
 
-<p className="text-slate-500 text-sm">
-Create and manage news articles and publications.
-</p>
-
-</div>
-
 <Button
 onClick={()=>setShowForm(true)}
 className="bg-[#AE8737] hover:bg-[#8f6e2d] text-black flex items-center gap-2"
 >
-
 <Plus className="w-4 h-4"/> Add Article
-
 </Button>
 
 </div>
 
 
-<Card className="border-none shadow-sm">
-
-<CardContent className="p-6">
-
-<div className="relative max-w-md mb-6">
+<div className="relative max-w-md">
 
 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"/>
 
@@ -402,7 +419,9 @@ className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg"
 </div>
 
 
-<div className="overflow-x-auto">
+<Card className="border-none shadow-sm">
+
+<CardContent className="p-6">
 
 <table className="w-full">
 
@@ -418,7 +437,6 @@ className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg"
 </tr>
 
 </thead>
-
 
 <tbody>
 
@@ -439,27 +457,31 @@ article.status==="Published"
 ? "bg-green-100 text-green-700"
 : "bg-yellow-100 text-yellow-700"
 }`}>
-
 {article.status}
-
 </span>
 
 </td>
 
 <td className="py-3 px-4 text-right space-x-2">
 
-<button className="p-2 hover:bg-blue-50 rounded"
-onClick={()=>window.open(`/news/${article.slug}`)}>
+<button
+className="p-2 hover:bg-blue-50 rounded"
+onClick={()=>window.open(`/news/${article.slug}`)}
+>
 <Eye className="w-4 h-4"/>
 </button>
 
-<button className="p-2 hover:bg-slate-100 rounded"
-onClick={()=>handleEdit(article)}>
+<button
+className="p-2 hover:bg-slate-100 rounded"
+onClick={()=>handleEdit(article)}
+>
 <Edit2 className="w-4 h-4"/>
 </button>
 
-<button className="p-2 hover:bg-red-50 rounded"
-onClick={()=>handleDelete(article.id)}>
+<button
+className="p-2 hover:bg-red-50 rounded"
+onClick={()=>handleDelete(article.id)}
+>
 <Trash2 className="w-4 h-4"/>
 </button>
 
@@ -472,8 +494,6 @@ onClick={()=>handleDelete(article.id)}>
 </tbody>
 
 </table>
-
-</div>
 
 </CardContent>
 
