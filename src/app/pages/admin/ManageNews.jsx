@@ -1,6 +1,6 @@
 import { supabase } from '../../../lib/supabase';
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Edit2, Trash2, X, Search, Filter, Calendar, Image as ImageIcon, Eye, Check, AlertCircle } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Search, Image as ImageIcon, Eye, Check, AlertCircle } from 'lucide-react';
 import { Card, CardContent } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 
@@ -12,7 +12,6 @@ const [showForm, setShowForm] = useState(false);
 const [editingArticle, setEditingArticle] = useState(null);
 const [searchTerm, setSearchTerm] = useState('');
 const [filterStatus, setFilterStatus] = useState('All');
-const [imageFile, setImageFile] = useState(null);
 const [imagePreview, setImagePreview] = useState('');
 
 const [formData, setFormData] = useState({
@@ -79,25 +78,24 @@ setFormData(prev=>({...prev,slug}));
 // MARKDOWN TOOLBAR
 // ============================
 
-const insertMarkdown = (before, after="") => {
+const insertMarkdown=(before,after="")=>{
 
-const textarea = textareaRef.current;
-
+const textarea=textareaRef.current;
 if(!textarea) return;
 
-const start = textarea.selectionStart;
-const end = textarea.selectionEnd;
+const start=textarea.selectionStart;
+const end=textarea.selectionEnd;
 
-const selected = formData.content.substring(start,end);
+const selected=formData.content.substring(start,end);
 
-const newText =
-formData.content.substring(0,start) +
-before +
-selected +
-after +
+const newText=
+formData.content.substring(0,start)+
+before+
+selected+
+after+
 formData.content.substring(end);
 
-setFormData(prev => ({
+setFormData(prev=>({
 ...prev,
 content:newText
 }));
@@ -112,10 +110,10 @@ const addNumber=()=>insertMarkdown("\n1. ");
 const addLink=()=>insertMarkdown(""text" (https://)");
 
 // ============================
-// INPUT CHANGE
+// INPUT
 // ============================
 
-const handleInputChange = (e) => {
+const handleInputChange=(e)=>{
 
 const {name,value,type,checked}=e.target;
 
@@ -127,22 +125,21 @@ setFormData(prev=>({
 };
 
 // ============================
-// IMAGE UPLOAD
+// IMAGE
 // ============================
 
-const handleImageChange = async (e) => {
+const handleImageChange=async(e)=>{
 
-const file = e.target.files[0];
-
+const file=e.target.files[0];
 if(!file) return;
 
-if(!file.type.startsWith('image/')){
-alert('File must be an image');
+if(!file.type.startsWith("image/")){
+alert("File must be an image");
 return;
 }
 
-if(file.size > 210241024){
-alert('Max image size is 2MB');
+if(file.size>210241024){
+alert("Max image size is 2MB");
 return;
 }
 
@@ -153,7 +150,7 @@ const {error}=await supabase.storage
 .upload(fileName,file);
 
 if(error){
-alert('Upload failed');
+alert("Upload failed");
 return;
 }
 
@@ -174,7 +171,7 @@ image:data.publicUrl
 // SUBMIT
 // ============================
 
-const handleSubmit = async (e) => {
+const handleSubmit=async(e)=>{
 
 e.preventDefault();
 
@@ -218,9 +215,9 @@ setShowForm(false);
 // DELETE
 // ============================
 
-const handleDelete = async (id) => {
+const handleDelete=async(id)=>{
 
-if(!window.confirm('Delete article?')) return;
+if(!window.confirm("Delete article?")) return;
 
 await supabase
 .from('news')
@@ -235,7 +232,7 @@ fetchArticles();
 // EDIT
 // ============================
 
-const handleEdit = (article) => {
+const handleEdit=(article)=>{
 
 setFormData(article);
 setEditingArticle(article);
@@ -248,7 +245,7 @@ setShowForm(true);
 // RESET
 // ============================
 
-const resetForm = () => {
+const resetForm=()=>{
 
 setFormData({
 title:'',
@@ -271,23 +268,14 @@ setImagePreview('');
 // FILTER
 // ============================
 
-const filteredArticles = articles.filter(article => {
+const filteredArticles=articles.filter(article=>{
 
-const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase());
-const matchesStatus = filterStatus==="All" || article.status===filterStatus;
+const matchesSearch=article.title.toLowerCase().includes(searchTerm.toLowerCase());
+const matchesStatus=filterStatus==="All" || article.status===filterStatus;
 
 return matchesSearch && matchesStatus;
 
 });
-
-const categories=[
-'Corporate Law',
-'Litigation',
-'Intellectual Property',
-'Real Estate',
-'Family Law',
-'Labor Law'
-];
 
 // ============================
 // FORM VIEW
@@ -299,101 +287,56 @@ return(
 
 <Card className="border-none shadow-md"><CardContent className="p-6"><div className="flex justify-between items-center mb-6"><h3 className="text-xl font-bold text-[#191919]">
 {editingArticle?'Edit Article':'Add New Article'}
-</h3><button onClick={()=>{setShowForm(false);resetForm();}}>
+</h3><button
+onClick={()=>{setShowForm(false);resetForm();}}
+className="text-slate-400 hover:text-slate-600"
+
+«»
+
 <X className="w-6 h-6"/>
-</button>
-
-</div><form onSubmit={handleSubmit} className="space-y-6"><div className="grid md:grid-cols-2 gap-6">{/* LEFT */}
-
-<div className="space-y-4"><div><label className="block text-sm font-medium text-[#191919] mb-1">
-Title
-</label><input
+</button></div><form onSubmit={handleSubmit} className="space-y-6"><input
 type="text"
 name="title"
 value={formData.title}
 onChange={handleInputChange}
+placeholder="Title"
 className="w-full px-4 py-2 border border-slate-300 rounded-lg"
 />
 
-</div><div><label className="block text-sm font-medium text-[#191919] mb-1">
-Slug
-</label><input
-type="text"
-name="slug"
-value={formData.slug}
-onChange={handleInputChange}
-className="w-full px-4 py-2 border border-slate-300 rounded-lg"
-/>
-
-</div><div><label className="block text-sm font-medium text-[#191919] mb-1">
-Category
-</label><select
-name="category"
-value={formData.category}
-onChange={handleInputChange}
-className="w-full px-4 py-2 border border-slate-300 rounded-lg"
-
-«»
-
-{categories.map(cat=>(
-
-<option key={cat} value={cat}>{cat}</option>
-))}</select></div></div>{/* RIGHT */}
-
-<div className="space-y-4"><div><label className="block text-sm font-medium text-[#191919] mb-2">
-Featured Image
-</label><input type="file" onChange={handleImageChange}/></div></div></div>{/* SUMMARY */}
-
-<div><label className="block text-sm font-medium text-[#191919] mb-1">
-Summary
-</label><textarea
+<textarea
 name="summary"
 value={formData.summary}
 onChange={handleInputChange}
+placeholder="Summary"
 rows="3"
 className="w-full px-4 py-2 border border-slate-300 rounded-lg"
 />
-
-</div>
-
 
 {/* TOOLBAR */}
 
 <div className="flex flex-wrap gap-2">
 
-<button type="button" onClick={addHeading} className="px-3 py-1 border rounded">H</button>
-<button type="button" onClick={addBold} className="px-3 py-1 border rounded font-bold">B</button>
-<button type="button" onClick={addItalic} className="px-3 py-1 border rounded italic">I</button>
-<button type="button" onClick={addBullet} className="px-3 py-1 border rounded">• List</button>
-<button type="button" onClick={addNumber} className="px-3 py-1 border rounded">1. List</button>
-<button type="button" onClick={addLink} className="px-3 py-1 border rounded">Link</button>
+<button type="button" onClick={addHeading} className="px-3 py-1 border rounded hover:bg-slate-100">H</button>
+<button type="button" onClick={addBold} className="px-3 py-1 border rounded font-bold hover:bg-slate-100">B</button>
+<button type="button" onClick={addItalic} className="px-3 py-1 border rounded italic hover:bg-slate-100">I</button>
+<button type="button" onClick={addBullet} className="px-3 py-1 border rounded hover:bg-slate-100">• List</button>
+<button type="button" onClick={addNumber} className="px-3 py-1 border rounded hover:bg-slate-100">1. List</button>
+<button type="button" onClick={addLink} className="px-3 py-1 border rounded hover:bg-slate-100">Link</button>
 
 </div>
-
-
-{/* CONTENT */}
 
 <textarea
 ref={textareaRef}
 name="content"
 value={formData.content}
 onChange={handleInputChange}
-rows="10"
+rows="12"
 className="w-full px-4 py-2 border border-slate-300 rounded-lg font-mono"
 />
 
-
-<div className="flex gap-3 pt-4 border-t">
-
-<Button type="submit" className="bg-[#AE8737] text-[#191919] px-6">
+<Button type="submit" className="bg-[#AE8737] hover:bg-[#8f6e2d] text-black">
 Save Article
 </Button>
-
-<Button type="button" onClick={()=>{setShowForm(false);resetForm();}}>
-Cancel
-</Button>
-
-</div>
 
 </form>
 
@@ -430,10 +373,10 @@ Create and manage news articles and publications.
 
 <Button
 onClick={()=>setShowForm(true)}
-className="bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] flex items-center gap-2"
+className="bg-[#AE8737] hover:bg-[#8f6e2d] text-black flex items-center gap-2"
 >
 
-<Plus className="w-4 h-4"/> Add New Article
+<Plus className="w-4 h-4"/> Add Article
 
 </Button>
 
@@ -444,13 +387,13 @@ className="bg-[#AE8737] hover:bg-[#8f6e2d] text-[#191919] flex items-center gap-
 
 <CardContent className="p-6">
 
-<div className="relative flex-1 max-w-md mb-6">
+<div className="relative max-w-md mb-6">
 
-<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400"/>
+<Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"/>
 
 <input
 type="text"
-placeholder="Search articles..."
+placeholder="Search..."
 value={searchTerm}
 onChange={(e)=>setSearchTerm(e.target.value)}
 className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg"
@@ -475,6 +418,7 @@ className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg"
 </tr>
 
 </thead>
+
 
 <tbody>
 
@@ -502,18 +446,21 @@ article.status==="Published"
 
 </td>
 
-<td className="py-3 px-4 text-right">
+<td className="py-3 px-4 text-right space-x-2">
 
-<button onClick={()=>window.open(`/news/${article.slug}`)}>
-<Eye/>
+<button className="p-2 hover:bg-blue-50 rounded"
+onClick={()=>window.open(`/news/${article.slug}`)}>
+<Eye className="w-4 h-4"/>
 </button>
 
-<button onClick={()=>handleEdit(article)}>
-<Edit2/>
+<button className="p-2 hover:bg-slate-100 rounded"
+onClick={()=>handleEdit(article)}>
+<Edit2 className="w-4 h-4"/>
 </button>
 
-<button onClick={()=>handleDelete(article.id)}>
-<Trash2/>
+<button className="p-2 hover:bg-red-50 rounded"
+onClick={()=>handleDelete(article.id)}>
+<Trash2 className="w-4 h-4"/>
 </button>
 
 </td>
