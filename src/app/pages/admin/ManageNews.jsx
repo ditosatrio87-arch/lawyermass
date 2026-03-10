@@ -71,6 +71,39 @@ useEffect(() => {
   }, []);
 
   const handleInputChange = (e) => {
+    // ============================
+// TOOLBAR FUNCTIONS
+// ============================
+
+const insertMarkdown = (before, after = "") => {
+
+  const textarea = textareaRef.current;
+  if (!textarea) return;
+
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+
+  const selected = formData.content.substring(start, end);
+
+  const newText =
+    formData.content.substring(0, start) +
+    before +
+    selected +
+    after +
+    formData.content.substring(end);
+
+  setFormData(prev => ({
+    ...prev,
+    content: newText
+  }));
+};
+
+const addHeading = () => insertMarkdown("\n## ");
+const addBold = () => insertMarkdown("**", "**");
+const addItalic = () => insertMarkdown("*", "*");
+const addBullet = () => insertMarkdown("\n- ");
+const addNumber = () => insertMarkdown("\n1. ");
+const addLink = () => insertMarkdown("[text](https://)");
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -173,7 +206,7 @@ useEffect(() => {
   const handleEdit = (article) => {
     setFormData(article);
     setEditingArticle(article);
-    setImagePreview(article.image || '');
+    setImagePreview(article.image_url || '');
     setImageFile(null);
     setShowForm(true);
   };
