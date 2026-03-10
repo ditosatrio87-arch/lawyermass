@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { Calendar } from 'lucide-react';
+import ReactMarkdown from "react-markdown";
 
 export function NewsDetail() {
   const { slug } = useParams();
@@ -76,15 +77,11 @@ export function NewsDetail() {
           />
         )}
 
-        {/* Content */}
-        <div
-  className="text-slate-700 leading-relaxed space-y-4"
-  dangerouslySetInnerHTML={{
-    __html: article.content
-      ?.replace(/\n/g, '<br/>')
-      ?.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-  }}
-></div>
+        {/* Content */}<div className="prose prose-lg max-w-none prose-headings:text-[#191919] prose-a:text-[#AE8737]">
+  <ReactMarkdown>
+    {article.content}
+  </ReactMarkdown>
+</div>
 
       </div>
     </section>
