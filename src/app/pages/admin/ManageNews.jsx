@@ -215,7 +215,38 @@ useEffect(() => {
     const matchesStatus = filterStatus === 'All' || article.status === filterStatus;
     return matchesSearch && matchesStatus;
   });
+// ======================
+// SIMPLE MARKDOWN TOOLBAR
+// ======================
 
+const insertText = (before, after = "") => {
+  const textarea = document.getElementById("articleContent");
+  if (!textarea) return;
+
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+
+  const selected = formData.content.substring(start, end);
+
+  const newText =
+    formData.content.substring(0, start) +
+    before +
+    selected +
+    after +
+    formData.content.substring(end);
+
+  setFormData(prev => ({
+    ...prev,
+    content: newText
+  }));
+};
+
+const addBold = () => insertText("**", "**");
+const addItalic = () => insertText("*", "*");
+const addHeading = () => insertText("\n## ");
+const addBullet = () => insertText("\n- ");
+const addNumber = () => insertText("\n1. ");
+const addLink = () => insertText("[text](https://)");
   const categories = [
     'Corporate Law',
     'Litigation',
@@ -370,10 +401,63 @@ useEffect(() => {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-[#191919] mb-1">Content</label>
+            <label className="block text-sm font-medium text-[#191919] mb-2">Content</label>
+
+{/* Toolbar */}
+<div className="flex flex-wrap gap-2 mb-2">
+
+<button
+type="button"
+onClick={addHeading}
+className="px-3 py-1 border rounded text-sm hover:bg-slate-100"
+>
+H
+</button>
+
+<button
+type="button"
+onClick={addBold}
+className="px-3 py-1 border rounded text-sm font-bold hover:bg-slate-100"
+>
+B
+</button>
+
+<button
+type="button"
+onClick={addItalic}
+className="px-3 py-1 border rounded text-sm italic hover:bg-slate-100"
+>
+I
+</button>
+
+<button
+type="button"
+onClick={addBullet}
+className="px-3 py-1 border rounded text-sm hover:bg-slate-100"
+>
+• List
+</button>
+
+<button
+type="button"
+onClick={addNumber}
+className="px-3 py-1 border rounded text-sm hover:bg-slate-100"
+>
+1. List
+</button>
+
+<button
+type="button"
+onClick={addLink}
+className="px-3 py-1 border rounded text-sm hover:bg-slate-100"
+>
+Link
+</button>
+
+</div>
               <textarea
-                name="content"
+id="articleContent"
+name="content"
                 value={formData.content}
                 onChange={handleInputChange}
                 rows="10"
