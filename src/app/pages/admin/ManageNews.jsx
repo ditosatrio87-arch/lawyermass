@@ -71,7 +71,13 @@ useEffect(() => {
   }, []);
 
   const handleInputChange = (e) => {
-    // ============================
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+  // ============================
 // TOOLBAR FUNCTIONS
 // ============================
 
@@ -104,12 +110,6 @@ const addItalic = () => insertMarkdown("*", "*");
 const addBullet = () => insertMarkdown("\n- ");
 const addNumber = () => insertMarkdown("\n1. ");
 const addLink = () => insertMarkdown("[text](https://)");
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
 
   const handleImageChange = async (e) => {
   const file = e.target.files[0];
