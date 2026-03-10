@@ -63,7 +63,7 @@ fetchArticles();
 
 
 // ============================
-// SLUG AUTO GENERATE
+// SLUG AUTO
 // ============================
 
 useEffect(()=>{
@@ -83,13 +83,12 @@ setFormData(prev=>({...prev,slug}));
 
 
 // ============================
-// SIMPLE MARKDOWN TOOLBAR
+// MARKDOWN TOOLBAR
 // ============================
 
 const insertMarkdown=(before,after="")=>{
 
 const textarea=textareaRef.current;
-
 if(!textarea) return;
 
 const start=textarea.selectionStart;
@@ -120,7 +119,7 @@ const addLink=()=>insertMarkdown("[text](https://)");
 
 
 // ============================
-// INPUT CHANGE
+// INPUT
 // ============================
 
 const handleInputChange=(e)=>{
@@ -128,23 +127,20 @@ const handleInputChange=(e)=>{
 const {name,value,type,checked}=e.target;
 
 setFormData(prev=>({
-
 ...prev,
 [name]:type==="checkbox"?checked:value
-
 }));
 
 };
 
 
 // ============================
-// IMAGE UPLOAD
+// IMAGE
 // ============================
 
 const handleImageChange=async(e)=>{
 
 const file=e.target.files[0];
-
 if(!file) return;
 
 if(!file.type.startsWith("image/")){
@@ -164,7 +160,6 @@ const {error}=await supabase.storage
 .upload(fileName,file);
 
 if(error){
-console.error(error);
 alert("Upload failed");
 return;
 }
@@ -208,26 +203,16 @@ created_by:user?.id
 
 if(editingArticle){
 
-const {error}=await supabase
+await supabase
 .from('news')
 .update(finalData)
 .eq('id',editingArticle.id);
 
-if(error){
-alert("Update failed");
-return;
-}
-
 }else{
 
-const {error}=await supabase
+await supabase
 .from('news')
 .insert([finalData]);
-
-if(error){
-alert("Insert failed");
-return;
-}
 
 }
 
@@ -308,16 +293,6 @@ return matchesSearch && matchesStatus;
 });
 
 
-const categories=[
-'Corporate Law',
-'Litigation',
-'Intellectual Property',
-'Real Estate',
-'Family Law',
-'Labor Law'
-];
-
-
 // ============================
 // FORM
 // ============================
@@ -327,7 +302,6 @@ if(showForm){
 return(
 
 <Card className="border-none shadow-md">
-
 <CardContent className="p-6">
 
 <div className="flex justify-between items-center mb-6">
@@ -336,9 +310,7 @@ return(
 {editingArticle?'Edit Article':'Add New Article'}
 </h3>
 
-<button
-onClick={()=>{setShowForm(false);resetForm();}}
->
+<button onClick={()=>{setShowForm(false);resetForm();}}>
 <X/>
 </button>
 
@@ -346,9 +318,6 @@ onClick={()=>{setShowForm(false);resetForm();}}
 
 
 <form onSubmit={handleSubmit} className="space-y-6">
-
-
-{/* TITLE */}
 
 <input
 type="text"
@@ -358,9 +327,6 @@ onChange={handleInputChange}
 placeholder="Title"
 className="w-full border rounded px-3 py-2"
 />
-
-
-{/* SUMMARY */}
 
 <textarea
 name="summary"
@@ -377,21 +343,14 @@ className="w-full border rounded px-3 py-2"
 <div className="flex flex-wrap gap-2">
 
 <button type="button" onClick={addHeading} className="border px-3 py-1 rounded">H</button>
-
 <button type="button" onClick={addBold} className="border px-3 py-1 rounded font-bold">B</button>
-
 <button type="button" onClick={addItalic} className="border px-3 py-1 rounded italic">I</button>
-
 <button type="button" onClick={addBullet} className="border px-3 py-1 rounded">• List</button>
-
 <button type="button" onClick={addNumber} className="border px-3 py-1 rounded">1. List</button>
-
 <button type="button" onClick={addLink} className="border px-3 py-1 rounded">Link</button>
 
 </div>
 
-
-{/* CONTENT */}
 
 <textarea
 ref={textareaRef}
@@ -407,11 +366,9 @@ className="w-full border rounded px-3 py-2 font-mono"
 Save Article
 </Button>
 
-
 </form>
 
 </CardContent>
-
 </Card>
 
 );
@@ -420,43 +377,87 @@ Save Article
 
 
 // ============================
-// TABLE
+// TABLE VIEW
 // ============================
 
 return(
 
 <div className="space-y-6">
 
-<Button onClick={()=>setShowForm(true)}>
-<Plus/> Add Article
+<div className="flex justify-between items-center">
+
+<h2 className="text-2xl font-bold text-[#191919]">
+Manage News
+</h2>
+
+<Button
+onClick={()=>setShowForm(true)}
+className="bg-[#AE8737] hover:bg-[#8f6e2d] text-black flex items-center gap-2"
+>
+<Plus className="w-4 h-4"/> Add Article
 </Button>
 
-<table className="w-full">
+</div>
 
-<thead>
+
+<div className="relative max-w-md">
+
+<Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"/>
+
+<input
+type="text"
+placeholder="Search..."
+value={searchTerm}
+onChange={(e)=>setSearchTerm(e.target.value)}
+className="w-full pl-10 pr-4 py-2 border rounded"
+/>
+
+</div>
+
+
+<table className="w-full border">
+
+<thead className="bg-slate-50">
 
 <tr>
-<th>Title</th>
-<th>Author</th>
-<th>Status</th>
-<th>Actions</th>
+<th className="text-left p-3">Title</th>
+<th className="text-left p-3">Author</th>
+<th className="text-left p-3">Status</th>
+<th className="text-right p-3">Actions</th>
 </tr>
 
 </thead>
+
 
 <tbody>
 
 {filteredArticles.map(article=>(
 
-<tr key={article.id}>
+<tr key={article.id} className="border-t">
 
-<td>{article.title}</td>
+<td className="p-3">{article.title}</td>
 
-<td>{article.author_name}</td>
+<td className="p-3">{article.author_name}</td>
 
-<td>{article.status}</td>
+<td className="p-3">
 
-<td>
+<span className={`px-2 py-1 text-xs rounded ${
+article.status==="Published"
+? "bg-green-100 text-green-700"
+: "bg-yellow-100 text-yellow-700"
+}`}>
+
+{article.status}
+
+</span>
+
+</td>
+
+<td className="p-3 text-right space-x-2">
+
+<button onClick={()=>window.open(`/news/${article.slug}`)}>
+<Eye/>
+</button>
 
 <button onClick={()=>handleEdit(article)}>
 <Edit2/>
@@ -464,10 +465,6 @@ return(
 
 <button onClick={()=>handleDelete(article.id)}>
 <Trash2/>
-</button>
-
-<button onClick={()=>window.open(`/news/${article.slug}`)}>
-<Eye/>
 </button>
 
 </td>
