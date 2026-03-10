@@ -36,7 +36,7 @@ linkedin: "https://www.linkedin.com/in/muhamadamar",
 experience: [
 "Hukum Korporasi & M&A: Pengelolaan struktur hukum dalam transaksi merger dan akuisisi, due diligence, serta negosiasi kontrak kompleks.",
 "Tata Kelola Perusahaan: Penyusunan kebijakan internal, compliance framework, dan penerapan praktik tata kelola perusahaan sesuai regulasi.",
-"Kepatuhan Regulasi: Konsultasi kepatuhan terhadap UU Perseroan Terbatas, UU Pasar Modal, serta regulasi sektoral.
+"Kepatuhan Regulasi: Konsultasi kepatuhan terhadap UU Perseroan Terbatas, UU Pasar Modal, serta regulasi sektoral."
 ],
   
 education: [
@@ -231,21 +231,12 @@ className="w-40 h-40 object-cover rounded-full mx-auto mb-6"
 Experience & Expertise
 </h4>
 
+<ul className="list-disc pl-5 text-sm text-gray-600 space-y-2">
 {selectedLawyer.experience.map((exp, idx) => (
-<div key={idx} className="mb-4">
-
-<p className="font-semibold text-gray-900 mb-1">
-{exp.title}
-</p>
-
-<ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
-{exp.points.map((point, pIdx) => (
-<li key={pIdx}>{point}</li>
+<li key={idx}>{exp}</li>
 ))}
 </ul>
 
-</div>
-))}
 </div>
 )}
 
