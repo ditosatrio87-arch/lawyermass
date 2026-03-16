@@ -194,7 +194,7 @@ export function StafKaryawan() {
 
                 {/* Card Info */}
                 <div className="p-6 text-center bg-[#1a1a1a] border-t-2 border-[#AE8737]">
-                  <h3 className="text-xl font-bold text-[#191919] mb-1">{employee.name}</h3>
+                  <h3 className="text-xl font-bold text-[#191919] text-white mb-1">{employee.name}</h3>
                   <p className="text-[#AE8737] font-semibold text-sm mb-1">{employee.title}</p>
                   <p className="text-gray-400 text-xs">{employee.specialty}</p>
                 </div>
