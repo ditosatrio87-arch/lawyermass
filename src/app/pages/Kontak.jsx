@@ -50,7 +50,7 @@ export function Kontak() {
                   <Mail className="w-8 h-8 text-[#AE8737] fill-[#AE8737]" />
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Email</h3>
-                <span className="text-gray-200 text-lg font-medium tracking-wide break-all">
+                <span className="text-gray-200 text-lg font-medium tracking-wide break-all hover:text-gray-800 transition-colors duration-300">
                   kantorpengacaramas@gmail.com
                 </span>
               </CardContent>
