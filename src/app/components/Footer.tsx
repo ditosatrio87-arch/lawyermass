@@ -58,7 +58,7 @@ export function Footer() {
             <div className="space-y-4 text-slate-400">
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#AE8737]" />
-                <span>+62 895 3040 7021</span>
+                <span>+62 882 9535 9866</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#AE8737]" />
@@ -70,7 +70,7 @@ export function Footer() {
                   href="https://wa.me/6289530407021"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp: +62 895 3040 7021
+                  WhatsApp: +62 882 9535 9866
                 </a>
               </div>
             </div>
