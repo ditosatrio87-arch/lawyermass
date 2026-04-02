@@ -33,7 +33,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">Telepon</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
-                  +62 895 3040 7021
+                  +62 882 9535 9866
                 </span>
               </CardContent>
             </Card>
@@ -71,7 +71,7 @@ export function Kontak() {
                 </div>
                 <h3 className="mb-3 text-white text-xl font-semibold group-hover:text-[#AE8737] transition-colors">WhatsApp</h3>
                 <span className="text-gray-200 text-lg font-medium tracking-wide">
-                  +62 895 3040 7021
+                  +62 882 9535 9866
                 </span>
               </CardContent>
             </Card>
